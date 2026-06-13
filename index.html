@@ -38,7 +38,7 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
 .section-title { font-size: 2rem; font-weight: 700; color: #0a1628; }
 .section-sub { font-size: 15px; color: #666; margin-top: 0.75rem; }
 .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.service-card { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 2rem; transition: all 0.2s; cursor: pointer; }
+.service-card { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 2rem; transition: all 0.2s; }
 .service-card:hover { border-color: #185FA5; box-shadow: 0 4px 20px rgba(24,95,165,0.1); transform: translateY(-2px); }
 .service-icon { width: 52px; height: 52px; background: #E6F1FB; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 24px; }
 .service-card h3 { font-size: 18px; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; }
@@ -63,7 +63,7 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
 .subscribe-form input { flex: 1; padding: 14px 18px; border: 1px solid #B5D4F4; border-radius: 8px; font-size: 14px; font-family: 'Noto Sans KR', sans-serif; outline: none; }
 .subscribe-form button { background: #185FA5; color: #fff; border: none; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; font-family: 'Noto Sans KR', sans-serif; cursor: pointer; white-space: nowrap; }
 .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-.contact-card { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.2s; cursor: pointer; text-decoration: none; display: block; }
+.contact-card { background: #fff; border: 1px solid #e8edf3; border-radius: 12px; padding: 2rem; text-align: center; transition: all 0.2s; text-decoration: none; display: block; }
 .contact-card:hover { border-color: #185FA5; box-shadow: 0 4px 20px rgba(24,95,165,0.1); }
 .contact-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
 .contact-card h3 { font-size: 16px; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; }
@@ -83,8 +83,8 @@ footer p { font-size: 13px; line-height: 1.8; }
 footer .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin: 1.5rem 0; flex-wrap: wrap; }
 footer .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 13px; }
 footer .footer-links a:hover { color: #85B7EB; }
-.kakao-float { position: fixed; bottom: 2rem; right: 2rem; background: #FEE500; color: #3C1E1E; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; z-index: 999; text-decoration: none; transition: transform 0.2s; }
-.kakao-float:hover { transform: scale(1.1); }
+.phone-float { position: fixed; bottom: 2rem; right: 2rem; background: #185FA5; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); cursor: pointer; z-index: 999; text-decoration: none; transition: transform 0.2s; }
+.phone-float:hover { transform: scale(1.1); }
 @media (max-width: 768px) {
   .hero h1 { font-size: 1.8rem; }
   .stats { grid-template-columns: repeat(2, 1fr); }
@@ -112,7 +112,7 @@ footer .footer-links a:hover { color: #85B7EB; }
   <h1>행정이 <span>스마트</span>해지다<br>위즈덤 행정사사무소</h1>
   <p>화학물질 신고·승인 · 법원경매 토지컨설팅 · 농지전용<br>개발행위허가 · 산재·행정심판<br>복잡한 행정업무, 전문가에게 맡기세요</p>
   <div class="hero-btns">
-    <a href="http://pf.kakao.com/_TslAE" class="btn-primary">💬 카카오톡 무료상담</a>
+    <a href="tel:010-9434-1467" class="btn-primary">📞 전화 무료상담</a>
     <a href="#goldlist" class="btn-outline">⭐ 경매 골드리스트 구독</a>
   </div>
 </section>
@@ -167,9 +167,7 @@ footer .footer-links a:hover { color: #85B7EB; }
     </div>
     <table class="goldlist-table">
       <thead>
-        <tr>
-          <th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th>
-        </tr>
+        <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
       </thead>
       <tbody>
         <tr><td>2022타경7723</td><td>금산군 부리면 수통리 728-6</td><td>2,684,000원</td><td class="price-cell">220,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.22</td></tr>
@@ -190,7 +188,7 @@ footer .footer-links a:hover { color: #85B7EB; }
     <p>유찰 5회 이상 충청권 토지 경매 물건을<br>매주 이메일로 무료로 보내드립니다</p>
     <div class="subscribe-form">
       <input type="email" placeholder="이메일 주소를 입력하세요" />
-      <button onclick="alert('구독 신청이 완료되었습니다! 담당자가 확인 후 연락드립니다.')">무료 구독 신청</button>
+      <button onclick="alert('구독 신청 완료! 담당자가 확인 후 연락드립니다.')">무료 구독 신청</button>
     </div>
   </div>
 </section>
@@ -237,15 +235,15 @@ footer .footer-links a:hover { color: #85B7EB; }
     <p class="section-sub">무엇이든 편하게 물어보세요</p>
   </div>
   <div class="contact-grid">
-    <a href="http://pf.kakao.com/_TslAE" class="contact-card">
-      <span class="contact-icon">💬</span>
-      <h3>카카오톡 상담</h3>
-      <p>무료 즉시 상담<br>24시간 메시지 접수</p>
-    </a>
     <a href="tel:010-9434-1467" class="contact-card">
       <span class="contact-icon">📞</span>
-      <h3>전화 문의</h3>
+      <h3>전화 상담</h3>
       <p>010-9434-1467<br>평일 09:00 ~ 18:00</p>
+    </a>
+    <a href="tel:010-9434-1467" class="contact-card">
+      <span class="contact-icon">📱</span>
+      <h3>문자 문의</h3>
+      <p>010-9434-1467<br>24시간 문자 접수</p>
     </a>
     <a href="https://blog.naver.com/kjyb0001" target="_blank" class="contact-card">
       <span class="contact-icon">📝</span>
@@ -266,6 +264,6 @@ footer .footer-links a:hover { color: #85B7EB; }
   </div>
   <p style="font-size:12px;">© 2026 위즈덤 행정사사무소. All rights reserved.</p>
 </footer>
-<a href="http://pf.kakao.com/_TslAE" class="kakao-float" title="카카오톡 상담">💬</a>
+<a href="tel:010-9434-1467" class="phone-float" title="전화상담">📞</a>
 </body>
 </html>
