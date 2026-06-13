@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="위즈덤 행정사사무소 - 화학물질 신고·승인, 법원경매 토지컨설팅, 농지전용, 개발행위허가, 산재·행정심판 전문 충청권 행정사">
+<meta name="keywords" content="행정사, 화학물질신고, 법원경매, 토지컨설팅, 농지전용, 개발행위허가, 산재, 행정심판, 충청, 대전">
+<title>위즈덤 행정사사무소 | 행정이 스마트해지다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans KR', sans-serif; background: #f5f7fa; color: #1a1a2e; }
+
+/* 네비게이션 */
+nav {
+  background: #0a1628;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.nav-logo {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.nav-logo span { color: #85B7EB; }
+.nav-menu {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-menu a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.nav-menu a:hover { color: #85B7EB; }
+.nav-cta {
+  background: #185FA5;
+  color: #fff !important;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px !important;
+}
+
+/* 히어로 */
+.hero {
+  background: linear-gradient(135deg, #0a1628 0%, #102040 60%, #0d3060 100%);
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(55,138,221,0.08);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(55,138,221,0.06);
+}
+.hero-badge {
+  display: inline-block;
+  background: rgba(55,138,221,0.2);
+  color: #85B7EB;
+  font-size: 13px;
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(55,138,221,0.4);
+  margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+.hero h1 span { color: #85B7EB; }
+.hero p {
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  background: #185FA5;
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+.btn-primary:hover { background: #0C447C; }
+.btn-outline {
+  background: transparent;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s;
+}
+.btn-outline:hover { border-color: #85B7EB; color: #85B7EB; }
+
+/* 통계 */
+.stats {
+  background: #fff;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: #e8edf3;
+}
+.stat-item {
+  background: #fff;
+  padding: 1.5rem;
+  text-align: center;
+}
+.stat-num {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #185FA5;
+}
+.stat-label {
+  font-size: 13px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* 섹션 공통 */
+.section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-eyebrow {
+  color: #185FA5;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a1628;
+}
+.section-sub {
+  font-size: 15px;
+  color: #666;
+  margin-top: 0.75rem;
+}
+
+/* 서비스 카드 */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.service-card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.service-card:hover {
+  border-color: #185FA5;
+  box-shadow: 0 4px 20px rgba(24,95,165,0.1);
+  transform: translateY(-2px);
+}
+.service-icon {
+  width: 52px; height: 52px;
+  background: #E6F1FB;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 24px;
+}
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0a1628;
+  margin-bottom: 0.5rem;
+}
+.service-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+}
+.service-tag {
+  display: inline-block;
+  background: #E6F1FB;
+  color: #185FA5;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-top: 12px;
+}
+
+/* 골드리스트 위젯 */
+.goldlist-section {
+  background: #0a1628;
+  padding: 4rem 2rem;
+}
+.goldlist-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.goldlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+.goldlist-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+.badge-gold {
+  background: rgba(250,199,117,0.2);
+  color: #FAC775;
+  font-size: 12px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(250,199,117,0.4);
+}
+.goldlist-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.goldlist-table th {
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  font-weight: 400;
+  padding: 10px 16px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.goldlist-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+  color: rgba(255,255,255,0.85);
+}
+.goldlist-table tr:hover td { background: rgba(255,255,255,0.03); }
+.price-cell { color: #85B7EB; font-weight: 500; }
+.fail-badge {
+  background: rgba(226,75,74,0.2);
+  color: #F09595;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.goldlist-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* 구독 폼 */
+.subscribe-section {
+  background: #E6F1FB;
+  padding: 4rem 2rem;
+}
+.subscribe-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.subscribe-inner h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0C447C;
+  margin-bottom: 0.75rem;
+}
+.subscribe-inner p {
+  color: #185FA5;
+  font-size: 15px;
+  margin-bottom: 2rem;
+}
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  border: 1px solid #B5D4F4;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Noto Sans KR', sans-serif;
+  outline: none;
+}
+.subscribe-form input:focus { border-color: #185FA5; }
+.subscribe-form button {
+  background: #185FA5;
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: 'Noto Sans KR', sans-serif;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 문의 */
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.contact-card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.contact-card:hover {
+  border-color: #185FA5;
+  box-shadow: 0 4px 20px rgba(24,95,165,0.1);
+}
+.contact-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+.contact-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0a1628;
+  margin-bottom: 0.5rem;
+}
+.contact-card p {
+  font-size: 13px;
+  color: #666;
+}
+
+/* 블로그 미리보기 */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.blog-card {
+  background: #fff;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+.blog-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.blog-card-img {
+  height: 160px;
+  background: linear-gradient(135deg, #E6F1FB, #B5D4F4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+.blog-card-body { padding: 1.25rem; }
+.blog-card-tag {
+  background: #E6F1FB;
+  color: #185FA5;
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.blog-card h3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: #0a1628;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.blog-card-date { font-size: 12px; color: #999; }
+
+/* 푸터 */
+footer {
+  background: #0a1628;
+  color: rgba(255,255,255,0.6);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+footer .footer-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+footer .footer-logo span { color: #85B7EB; }
+footer p { font-size: 13px; line-height: 1.8; }
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+footer .footer-links a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  font-size: 13px;
+}
+footer .footer-links a:hover { color: #85B7EB; }
+
+/* 카카오 플로팅 버튼 */
+.kakao-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: #FEE500;
+  color: #3C1E1E;
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 999;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+.kakao-float:hover { transform: scale(1.1); }
+
+/* 반응형 */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 1.8rem; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .services-grid { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .subscribe-form { flex-direction: column; }
+  .nav-menu { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- 네비게이션 -->
+<nav>
+  <a href="#" class="nav-logo">위즈덤<span>행정사</span></a>
+  <ul class="nav-menu">
+    <li><a href="#services">서비스</a></li>
+    <li><a href="#goldlist">경매골드리스트</a></li>
+    <li><a href="#blog">블로그</a></li>
+    <li><a href="#contact">문의하기</a></li>
+    <li><a href="https://blog.naver.com/kjyb0001" target="_blank" class="nav-cta">네이버 블로그</a></li>
+  </ul>
+</nav>
+
+<!-- 히어로 -->
+<section class="hero">
+  <div class="hero-badge">시험출신 국가공인 행정사 APA · 충청권 전문</div>
+  <h1>행정이 <span>스마트</span>해지다<br>위즈덤 행정사사무소</h1>
+  <p>화학물질 신고·승인 · 법원경매 토지컨설팅 · 농지전용<br>개발행위허가 · 산재·행정심판<br>복잡한 행정업무, 전문가에게 맡기세요</p>
+  <div class="hero-btns">
+    <a href="http://pf.kakao.com/_xxxxx" class="btn-primary">💬 카카오톡 무료상담</a>
+    <a href="#goldlist" class="btn-outline">⭐ 경매 골드리스트 구독</a>
+  </div>
+</section>
+
+<!-- 통계 -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">260,570+</div>
+    <div class="stat-label">블로그 누적 방문자</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2,600+</div>
+    <div class="stat-label">네이버 이웃수</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10년+</div>
+    <div class="stat-label">행정사 경력</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">51건</div>
+    <div class="stat-label">이번 주 경매 분석</div>
+  </div>
+</div>
+
+<!-- 서비스 -->
+<section class="section" id="services">
+  <div class="section-header">
+    <div class="section-eyebrow">SERVICES</div>
+    <h2 class="section-title">전문 서비스</h2>
+    <p class="section-sub">복잡한 행정 절차를 빠르고 정확하게 처리해드립니다</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">⚗️</div>
+      <h3>화학물질 신고·승인</h3>
+      <p>생활화학제품 안전확인 신고, 유해화학물질 영업허가, 화학제품 수입·제조 신고 등 화학물질 관련 모든 행정업무를 전문적으로 처리합니다.</p>
+      <span class="service-tag">화학물질관리법</span>
+      <span class="service-tag">생활화학제품법</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏛️</div>
+      <h3>법원경매 토지컨설팅</h3>
+      <p>충청권 법원경매 토지 물건 분석, 유찰 5회 이상 골드리스트 제공, 농지취득자격증명 대행 등 경매 토지 투자를 전문적으로 지원합니다.</p>
+      <span class="service-tag">경매분석</span>
+      <span class="service-tag">농지취득자격증명</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🌾</div>
+      <h3>농지전용·개발행위허가</h3>
+      <p>농지전용허가, 개발행위허가, 지목변경 신청 등 토지 개발 관련 행정허가를 신속하게 처리해드립니다.</p>
+      <span class="service-tag">농지전용</span>
+      <span class="service-tag">개발행위허가</span>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">⚖️</div>
+      <h3>산재·행정심판</h3>
+      <p>산업재해 신청 및 불복, 행정심판·행정소송 대행, 각종 행정처분 불복 절차를 전문적으로 지원합니다.</p>
+      <span class="service-tag">산재처리</span>
+      <span class="service-tag">행정심판</span>
+    </div>
+  </div>
+</section>
+
+<!-- 경매 골드리스트 -->
+<section class="goldlist-section" id="goldlist">
+  <div class="goldlist-inner">
+    <div class="goldlist-header">
+      <h2 class="goldlist-title">⭐ 이번 주 경매 골드리스트</h2>
+      <span class="badge-gold">유찰 5회 이상 · 충청권 토지</span>
+    </div>
+    <table class="goldlist-table">
+      <thead>
+        <tr>
+          <th>사건번호</th>
+          <th>소재지</th>
+          <th>감정가</th>
+          <th>최저가</th>
+          <th>유찰</th>
+          <th>매각기일</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2022타경7723</td>
+          <td>금산군 부리면 수통리 728-6</td>
+          <td>2,684,000원</td>
+          <td class="price-cell">220,000원</td>
+          <td><span class="fail-badge">7회</span></td>
+          <td>2026.06.22</td>
+        </tr>
+        <tr>
+          <td>2024타경59341</td>
+          <td>서산시 팔봉면 금학리 388</td>
+          <td>8,820,000원</td>
+          <td class="price-cell">1,037,000원</td>
+          <td><span class="fail-badge">6회</span></td>
+          <td>2026.06.17</td>
+        </tr>
+        <tr>
+          <td>2024타경21763</td>
+          <td>공주시 태봉동 335</td>
+          <td>16,362,040원</td>
+          <td class="price-cell">2,749,800원</td>
+          <td><span class="fail-badge">5회</span></td>
+          <td>2026.06.23</td>
+        </tr>
+        <tr>
+          <td>2024타경18829</td>
+          <td>홍성군 구항면 공리 21-17</td>
+          <td>136,224,000원</td>
+          <td class="price-cell">22,896,000원</td>
+          <td><span class="fail-badge">11회</span></td>
+          <td>2026.06.16</td>
+        </tr>
+        <tr>
+          <td>2023타경54967</td>
+          <td>태안군 태안읍 반곡리 708-11</td>
+          <td>65,142,000원</td>
+          <td class="price-cell">3,755,000원</td>
+          <td><span class="fail-badge">8회</span></td>
+          <td>2026.06.17</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="goldlist-cta">
+      <a href="#subscribe" class="btn-primary">매주 무료로 받아보기 →</a>
+    </div>
+  </div>
+</section>
+
+<!-- 구독 -->
+<section class="subscribe-section" id="subscribe">
+  <div class="subscribe-inner">
+    <h2>매주 경매 골드리스트 무료 구독</h2>
+    <p>유찰 5회 이상 충청권 토지 경매 물건을<br>매주 이메일로 무료로 보내드립니다</p>
+    <div class="subscribe-form">
+      <input type="email" placeholder="이메일 주소를 입력하세요" />
+      <button onclick="alert('구독 신청이 완료되었습니다!')">무료 구독 신청</button>
+    </div>
+  </div>
+</section>
+
+<!-- 블로그 -->
+<section class="section" id="blog">
+  <div class="section-header">
+    <div class="section-eyebrow">BLOG</div>
+    <h2 class="section-title">최신 정보</h2>
+    <p class="section-sub">행정사가 직접 전하는 최신 행정 정보</p>
+  </div>
+  <div class="blog-grid">
+    <a href="https://blog.naver.com/kjyb0001" target="_blank" class="blog-card">
+      <div class="blog-card-img">⚗️</div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">화학물질</span>
+        <h3>살생물제품 승인 절차와 필요 서류 완벽 정리</h3>
+        <div class="blog-card-date">2026.02.20</div>
+      </div>
+    </a>
+    <a href="https://blog.naver.com/kjyb0001" target="_blank" class="blog-card">
+      <div class="blog-card-img">🏛️</div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">경매</span>
+        <h3>유해화학물질 앞선판매 허가 신청 방법</h3>
+        <div class="blog-card-date">2026.02.07</div>
+      </div>
+    </a>
+    <a href="https://blog.naver.com/kjyb0001" target="_blank" class="blog-card">
+      <div class="blog-card-img">🌾</div>
+      <div class="blog-card-body">
+        <span class="blog-card-tag">부동산</span>
+        <h3>이 땅에 무엇을 지을 수 있나 - 개발행위허가 완전 정리</h3>
+        <div class="blog-card-date">2026.01.20</div>
+      </div>
+    </a>
+  </div>
+  <div style="text-align:center; margin-top:2rem;">
+    <a href="https://blog.naver.com/kjyb0001" target="_blank" class="btn-primary">네이버 블로그 더 보기 →</a>
+  </div>
+</section>
+
+<!-- 문의 -->
+<section class="section" id="contact">
+  <div class="section-header">
+    <div class="section-eyebrow">CONTACT</div>
+    <h2 class="section-title">문의하기</h2>
+    <p class="section-sub">무엇이든 편하게 물어보세요</p>
+  </div>
+  <div class="contact-grid">
+    <a href="http://pf.kakao.com/_xxxxx" class="contact-card">
+      <span class="contact-icon">💬</span>
+      <h3>카카오톡 상담</h3>
+      <p>무료 즉시 상담<br>24시간 메시지 접수</p>
+    </a>
+    <a href="tel:042-000-0000" class="contact-card">
+      <span class="contact-icon">📞</span>
+      <h3>전화 문의</h3>
+      <p>042-000-0000<br>평일 09:00 ~ 18:00</p>
+    </a>
+    <a href="https://blog.naver.com/kjyb0001" target="_blank" class="contact-card">
+      <span class="contact-icon">📝</span>
+      <h3>블로그 문의</h3>
+      <p>네이버 블로그<br>댓글/메시지 문의</p>
+    </a>
+  </div>
+</section>
+
+<!-- 푸터 -->
+<footer>
+  <div class="footer-logo">위즈덤<span>행정사</span>사무소</div>
+  <p>시험출신 국가공인 행정사(APA) · 충청권 전문<br>
+  화학물질신고 · 법원경매컨설팅 · 농지전용 · 개발행위허가 · 산재·행정심판</p>
+  <div class="footer-links">
+    <a href="#services">서비스</a>
+    <a href="#goldlist">경매골드리스트</a>
+    <a href="#blog">블로그</a>
+    <a href="#contact">문의하기</a>
+    <a href="https://blog.naver.com/kjyb0001" target="_blank">네이버 블로그</a>
+  </div>
+  <p style="font-size:12px;">© 2026 위즈덤 행정사사무소. All rights reserved.</p>
+</footer>
+
+<!-- 카카오 플로팅 버튼 -->
+<a href="http://pf.kakao.com/_xxxxx" class="kakao-float" title="카카오톡 상담">💬</a>
+
+</body>
+</html>
