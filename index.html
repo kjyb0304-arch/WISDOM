@@ -330,17 +330,14 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
     }
 
     window.addEventListener('load', () => {
-        const user = sessionStorage.getItem('kakao_user');
-        if (user) {
-            const userInfo = JSON.parse(user);
-            document.getElementById('kakao-login-btn').style.display = 'none';
-            document.getElementById('kakao-user-area').style.display = 'flex';
-            if (userInfo.profile_image) {
-                document.getElementById('kakao-profile-img').src = userInfo.profile_image;
+            const loggedIn = sessionStorage.getItem('kakao_logged_in');
+            const nickname = sessionStorage.getItem('kakao_nickname') || '회원';
+            if (loggedIn) {
+                document.getElementById('kakao-login-btn').style.display = 'none';
+                document.getElementById('kakao-user-area').style.display = 'flex';
+                document.getElementById('kakao-user-name').textContent = nickname + '님';
             }
-            document.getElementById('kakao-user-name').textContent = userInfo.nickname + '님';
-        }
-    });
+        });
 </script>
   <button class="phone-float" onclick="showPhone()" title="전화상담">📞</button>
 </body>
