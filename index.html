@@ -318,11 +318,8 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
     Kakao.init('40c094b3929dddd489f0e188fdaf11f5');
 
     function kakaoLogin() {
-        Kakao.Auth.authorize({
-            redirectUri: REDIRECT_URI,
-            scope: 'profile_nickname,profile_image'
-        });
-    }
+    window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=1881df343aff349d89e0a99987adfc34&redirect_uri=https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html&response_type=code';
+}
 
     function kakaoLogout() {
         Kakao.Auth.logout(() => {
