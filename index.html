@@ -142,6 +142,16 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
     <li><a href="#blog">블로그</a></li>
     <li><a href="#contact">문의하기</a></li>
     <li><a href="https://blog.naver.com/kjyb0001" target="_blank" class="nav-cta">네이버 블로그</a></li>
+  <li>
+          <div id="kakao-login-area" style="display:inline-block;">
+            <button id="kakao-login-btn" onclick="kakaoLogin()" style="background:#FEE500;color:#000;border:none;padding:7px 14px;border-radius:6px;font-size:13px;font-weight:bold;cursor:pointer;">💬 카카오 로그인</button>
+            <div id="kakao-user-area" style="display:none;align-items:center;gap:8px;">
+              <img id="kakao-profile-img" src="" style="width:28px;height:28px;border-radius:50%;">
+              <span id="kakao-user-name" style="color:white;font-size:13px;"></span>
+              <button onclick="kakaoLogout()" style="background:transparent;color:#aaa;border:1px solid #aaa;padding:3px 8px;border-radius:4px;font-size:11px;cursor:pointer;">로그아웃</button>
+            </div>
+          </div>
+        </li>
   </ul>
 </nav>
 <section class="hero">
@@ -301,6 +311,40 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
   </div>
   <p style="font-size:12px;">© 2026 위즈덤 행정사사무소. All rights reserved.</p>
 </footer>
-<button class="phone-float" onclick="showPhone()" title="전화상담">📞</button>
+<script>
+    const KAKAO_JS_KEY = '1881df343aff349d89e0a99987adfc34';
+    const REDIRECT_URI = 'https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html';
+
+    Kakao.init(KAKAO_JS_KEY);
+
+    function kakaoLogin() {
+        Kakao.Auth.authorize({
+            redirectUri: REDIRECT_URI,
+            scope: 'profile_nickname,profile_image'
+        });
+    }
+
+    function kakaoLogout() {
+        Kakao.Auth.logout(() => {
+            sessionStorage.removeItem('kakao_user');
+            document.getElementById('kakao-login-btn').style.display = 'flex';
+            document.getElementById('kakao-user-area').style.display = 'none';
+        });
+    }
+
+    window.addEventListener('load', () => {
+        const user = sessionStorage.getItem('kakao_user');
+        if (user) {
+            const userInfo = JSON.parse(user);
+            document.getElementById('kakao-login-btn').style.display = 'none';
+            document.getElementById('kakao-user-area').style.display = 'flex';
+            if (userInfo.profile_image) {
+                document.getElementById('kakao-profile-img').src = userInfo.profile_image;
+            }
+            document.getElementById('kakao-user-name').textContent = userInfo.nickname + '님';
+        }
+    });
+</script>
+  <button class="phone-float" onclick="showPhone()" title="전화상담">📞</button>
 </body>
 </html>
