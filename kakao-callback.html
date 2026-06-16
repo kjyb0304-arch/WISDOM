@@ -1,0 +1,86 @@
+<!-- ===== 카카오 로그인 버튼 (네비게이션에 추가) ===== -->
+<!-- 1. <head> 안에 추가 -->
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" 
+        integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" 
+        crossorigin="anonymous"></script>
+
+<!-- 2. 네비게이션 메뉴에 추가할 버튼 -->
+<div id="kakao-login-area" style="display:inline-block;">
+    <!-- 로그아웃 상태 -->
+    <button id="kakao-login-btn" onclick="kakaoLogin()" style="
+        background: #FEE500;
+        color: #000;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    ">
+        💬 카카오 로그인
+    </button>
+    <!-- 로그인 상태 (숨김) -->
+    <div id="kakao-user-area" style="display:none; align-items:center; gap:10px;">
+        <img id="kakao-profile-img" src="" style="width:32px; height:32px; border-radius:50%;">
+        <span id="kakao-user-name" style="color:white; font-size:14px;"></span>
+        <button onclick="kakaoLogout()" style="
+            background: transparent;
+            color: #aaa;
+            border: 1px solid #aaa;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+        ">로그아웃</button>
+    </div>
+</div>
+
+<!-- 3. </body> 닫기 전에 추가할 스크립트 -->
+<script>
+    const KAKAO_JS_KEY = '1881df343aff349d89e0a99987adfc34';
+    const REDIRECT_URI = 'https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html';
+
+    // 카카오 SDK 초기화
+    Kakao.init(KAKAO_JS_KEY);
+
+    // 카카오 로그인
+    function kakaoLogin() {
+        Kakao.Auth.authorize({
+            redirectUri: REDIRECT_URI,
+            scope: 'profile_nickname,profile_image'
+        });
+    }
+
+    // 카카오 로그아웃
+    function kakaoLogout() {
+        Kakao.Auth.logout(() => {
+            sessionStorage.removeItem('kakao_logged_in');
+            sessionStorage.removeItem('kakao_user');
+            document.getElementById('kakao-login-btn').style.display = 'flex';
+            document.getElementById('kakao-user-area').style.display = 'none';
+            alert('로그아웃 되었습니다.');
+        });
+    }
+
+    // 로그인 상태 확인
+    window.addEventListener('load', () => {
+        const user = sessionStorage.getItem('kakao_user');
+        if (user) {
+            const userInfo = JSON.parse(user);
+            showUserInfo(userInfo);
+        }
+    });
+
+    // 사용자 정보 표시
+    function showUserInfo(userInfo) {
+        document.getElementById('kakao-login-btn').style.display = 'none';
+        document.getElementById('kakao-user-area').style.display = 'flex';
+        if (userInfo.profile_image) {
+            document.getElementById('kakao-profile-img').src = userInfo.profile_image;
+        }
+        document.getElementById('kakao-user-name').textContent = userInfo.nickname + '님';
+    }
+</script>
