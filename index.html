@@ -105,6 +105,10 @@ footer .footer-links a:hover { color: #85B7EB; }
   .subscribe-form { flex-direction: column; }
   .nav-menu { display: none; }
 }
+  .goldlist-tabs { display:flex; gap:10px; margin-bottom:1.5rem; }
+.tab-btn { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:6px; font-size:14px; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all 0.2s; }
+.tab-btn.active { background:#185FA5; color:#fff; border-color:#185FA5; }
+.tab-btn:hover { border-color:#85B7EB; color:#85B7EB; }
 </style>
 </head>
 <body>
@@ -132,6 +136,13 @@ function closeModal() {
 document.getElementById('phoneModal').addEventListener('click', function(e) {
   if(e.target === this) closeModal();
 });
+  function switchTab(tab) {
+  document.getElementById('tab-land').style.display = tab === 'land' ? 'block' : 'none';
+  document.getElementById('tab-building').style.display = tab === 'building' ? 'block' : 'none';
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (tab === 'land' && i === 0) || (tab === 'building' && i === 1));
+  });
+}
 </script>
 
 <nav>
@@ -210,21 +221,37 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
   <div class="goldlist-inner">
     <div class="goldlist-header">
       <h2 class="goldlist-title">⭐ 이번 주 경매 골드리스트</h2>
-      <span class="badge-gold">유찰 3회 이상 · 충청권 토지</span>
+      <span class="badge-gold">유찰 3회 이상 · 충청권</span>
     </div>
-    <table class="goldlist-table">
-      <thead>
-        <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
-      </thead>
-      <tbody>
-  <tr><td>2024타경110586</td><td>대전 동구 자양동 87-23</td><td>763,311,400원</td><td class="price-cell">30,794,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.17</td></tr>
-  <tr><td>2023타경115492</td><td>대전 중구 사령동 3-1</td><td>429,051,590원</td><td class="price-cell">103,231,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-  <tr><td>2025타경502748</td><td>대전 동구 자양동 48-12</td><td>1,308,251,340원</td><td class="price-cell">314,111,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.17</td></tr>
-  <tr><td>2025타경426</td><td>대전 유성구 송강동 294-13</td><td>1,273,292,400원</td><td class="price-cell">436,738,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-  <tr><td>2025타경500940</td><td>대전 서구 오동 314</td><td>898,319,000원</td><td class="price-cell">308,123,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
-  <tr><td>2025타경3908</td><td>대전 유성구 자우동 36-5</td><td>742,136,000원</td><td class="price-cell">363,647,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.17</td></tr>
-</tbody>
-    </table>
+    <div class="goldlist-tabs">
+      <button class="tab-btn active" onclick="switchTab('land')">🌾 토지</button>
+      <button class="tab-btn" onclick="switchTab('building')">🏢 건물</button>
+    </div>
+    <div id="tab-land">
+      <table class="goldlist-table">
+        <thead>
+          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2024타경110586</td><td>대전 동구 자양동 87-23</td><td>763,311,400원</td><td class="price-cell">30,794,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.17</td></tr>
+          <tr><td>2023타경115492</td><td>대전 중구 사령동 3-1</td><td>429,051,590원</td><td class="price-cell">103,231,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
+          <tr><td>2025타경502748</td><td>대전 동구 자양동 48-12</td><td>1,308,251,340원</td><td class="price-cell">314,111,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.17</td></tr>
+          <tr><td>2025타경426</td><td>대전 유성구 송강동 294-13</td><td>1,273,292,400원</td><td class="price-cell">436,738,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
+          <tr><td>2025타경500940</td><td>대전 서구 오동 314</td><td>898,319,000원</td><td class="price-cell">308,123,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
+          <tr><td>2025타경3908</td><td>대전 유성구 자우동 36-5</td><td>742,136,000원</td><td class="price-cell">363,647,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.17</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="tab-building" style="display:none;">
+      <table class="goldlist-table">
+        <thead>
+          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,0.4);padding:2rem;">건물 데이터 업데이트 중입니다</td></tr>
+        </tbody>
+      </table>
+    </div>
     <div class="goldlist-cta">
       <a href="#subscribe" class="btn-primary">매주 무료로 받아보기 →</a>
     </div>
