@@ -45,17 +45,60 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
 .service-card h3 { font-size: 18px; font-weight: 700; color: #0a1628; margin-bottom: 0.5rem; }
 .service-card p { font-size: 14px; color: #666; line-height: 1.7; }
 .service-tag { display: inline-block; background: #E6F1FB; color: #185FA5; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-top: 12px; margin-right: 4px; }
+
+/* =============================================
+   골드리스트 섹션 - 카드형 개편
+   ============================================= */
 .goldlist-section { background: #0a1628; padding: 4rem 2rem; }
 .goldlist-inner { max-width: 1100px; margin: 0 auto; }
-.goldlist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+.goldlist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px; }
 .goldlist-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
 .badge-gold { background: rgba(250,199,117,0.2); color: #FAC775; font-size: 12px; padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(250,199,117,0.4); }
-.goldlist-table { width: 100%; border-collapse: collapse; }
-.goldlist-table th { background: rgba(255,255,255,0.05); color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 400; padding: 10px 16px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
-.goldlist-table td { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.06); font-size: 14px; color: rgba(255,255,255,0.85); }
-.price-cell { color: #85B7EB; font-weight: 500; }
-.fail-badge { background: rgba(226,75,74,0.2); color: #F09595; font-size: 11px; padding: 3px 10px; border-radius: 20px; }
+
+/* 탭 */
+.goldlist-tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
+.gl-tab { padding: 8px 18px; border-radius: 6px; font-size: 13px; font-family: 'Noto Sans KR', sans-serif; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); cursor: pointer; background: transparent; transition: all 0.15s; }
+.gl-tab:hover { border-color: #85B7EB; color: #85B7EB; }
+.gl-tab.active-blue { background: #185FA5; color: #fff; border-color: #185FA5; }
+.gl-tab.is-gold { color: #FAC775; border-color: rgba(250,199,117,0.35); background: rgba(250,199,117,0.07); }
+.gl-tab.active-gold { background: rgba(250,199,117,0.25); color: #FAC775; border-color: rgba(250,199,117,0.6); }
+
+/* 패널 */
+.gl-panel { display: none; }
+.gl-panel.visible { display: block; }
+.gl-count { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+
+/* 카드 그리드 */
+.gl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+
+/* 개별 카드 */
+.gl-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 16px; transition: border-color 0.15s, background 0.15s; }
+.gl-card:hover { border-color: rgba(133,183,235,0.45); background: rgba(255,255,255,0.08); }
+
+.gl-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+.gl-case { font-size: 11px; color: rgba(255,255,255,0.4); font-family: monospace; line-height: 1.4; }
+.gl-fail { font-size: 11px; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
+.gl-fail-3 { background: rgba(24,95,165,0.3); color: #85B7EB; }
+.gl-fail-5 { background: rgba(226,75,74,0.2); color: #F09595; }
+.gl-fail-hi { background: rgba(250,199,117,0.2); color: #FAC775; border: 1px solid rgba(250,199,117,0.4); }
+
+.gl-addr { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.5; margin-bottom: 10px; font-weight: 500; }
+
+.gl-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.gl-appraise { font-size: 11px; color: rgba(255,255,255,0.4); }
+.gl-min { font-size: 16px; color: #85B7EB; font-weight: 700; }
+.gl-ratio { font-size: 11px; color: #9FE1CB; margin-left: auto; }
+
+.gl-card-bottom { margin-top: 9px; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 8px; display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.45); }
+.gl-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.gl-dot-soon { background: #FAC775; }
+.gl-dot-normal { background: rgba(255,255,255,0.2); }
+.gl-soon-label { color: #FAC775; font-weight: 500; }
+
 .goldlist-cta { text-align: center; margin-top: 2rem; }
+
+/* ============================================= */
+
 .subscribe-section { background: #E6F1FB; padding: 4rem 2rem; }
 .subscribe-inner { max-width: 600px; margin: 0 auto; text-align: center; }
 .subscribe-inner h2 { font-size: 1.8rem; font-weight: 700; color: #0C447C; margin-bottom: 0.75rem; }
@@ -103,13 +146,8 @@ footer .footer-links a:hover { color: #85B7EB; }
   .blog-grid { grid-template-columns: 1fr; }
   .subscribe-form { flex-direction: column; }
   .nav-menu { display: none; }
+  .gl-cards { grid-template-columns: 1fr; }
 }
-.goldlist-tabs { display:flex; gap:10px; margin-bottom:1.5rem; flex-wrap:wrap; }
-.tab-btn { background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); border:1px solid rgba(255,255,255,0.2); padding:8px 20px; border-radius:6px; font-size:14px; font-family:'Noto Sans KR',sans-serif; cursor:pointer; transition:all 0.2s; }
-.tab-btn.active { background:#185FA5; color:#fff; border-color:#185FA5; }
-.tab-btn:hover { border-color:#85B7EB; color:#85B7EB; }
-.tab-btn.cn { background:rgba(250,199,117,0.1); border-color:rgba(250,199,117,0.3); color:#FAC775; }
-.tab-btn.cn.active { background:rgba(250,199,117,0.3); border-color:#FAC775; color:#fff; }
 </style>
 </head>
 <body>
@@ -136,21 +174,6 @@ function closeModal() {
 document.getElementById('phoneModal').addEventListener('click', function(e) {
   if(e.target === this) closeModal();
 });
-function switchTab(tab) {
-  var tabs = ['land','building','cn-land','cn-building'];
-  tabs.forEach(function(t) {
-    var el = document.getElementById('tab-' + t);
-    if(el) el.style.display = (t === tab) ? 'block' : 'none';
-  });
-  document.querySelectorAll('.tab-btn').forEach(function(btn, i) {
-    btn.classList.toggle('active',
-      (tab === 'land' && i === 0) ||
-      (tab === 'building' && i === 1) ||
-      (tab === 'cn-land' && i === 2) ||
-      (tab === 'cn-building' && i === 3)
-    );
-  });
-}
 </script>
 
 <nav>
@@ -229,285 +252,46 @@ function switchTab(tab) {
   </div>
 </section>
 
+<!-- =============================================
+     골드리스트 섹션 - 카드형
+     ============================================= -->
 <section class="goldlist-section" id="goldlist">
   <div class="goldlist-inner">
     <div class="goldlist-header">
       <h2 class="goldlist-title">⭐ 이번 주 경매 골드리스트</h2>
       <span class="badge-gold">유찰 3회 이상 · 충청권</span>
     </div>
+
+    <!-- 범례 -->
+    <div style="display:flex;gap:14px;margin-bottom:1rem;flex-wrap:wrap;">
+      <span style="font-size:11px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:rgba(24,95,165,0.5);"></span>유찰 3~4회</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:rgba(226,75,74,0.5);"></span>유찰 5~6회</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:rgba(250,199,117,0.5);"></span>유찰 7회 이상</span>
+      <span style="font-size:11px;color:rgba(255,255,255,0.45);display:flex;align-items:center;gap:5px;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:#FAC775;"></span>매각기일 임박(5일 이내)</span>
+    </div>
+
     <div class="goldlist-tabs">
-      <button class="tab-btn" onclick="switchTab('land')">🌾 토지 (대전·세종)</button>
-      <button class="tab-btn" onclick="switchTab('building')">🏢 건물 (대전·세종)</button>
-      <button class="tab-btn cn active" onclick="switchTab('cn-land')">🌾 토지 (충남)</button>
-      <button class="tab-btn cn" onclick="switchTab('cn-building')">🏢 건물 (충남)</button>
+      <button class="gl-tab active-blue" onclick="glSwitch('land-dj',0)">🌾 토지 (대전·세종)</button>
+      <button class="gl-tab" onclick="glSwitch('bld-dj',1)">🏢 건물 (대전·세종)</button>
+      <button class="gl-tab is-gold" onclick="glSwitch('land-cn',2)">🌾 토지 (충남)</button>
+      <button class="gl-tab is-gold" onclick="glSwitch('bld-cn',3)">🏢 건물 (충남)</button>
     </div>
 
-    <div id="tab-land" style="display:none;">
-      <table class="goldlist-table">
-        <thead>
-          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>2024타경110586</td><td>대전 동구 자양동 87-23</td><td>763,311,400원</td><td class="price-cell">30,794,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.17</td></tr>
-          <tr><td>2023타경115492</td><td>대전 중구 사령동 3-1</td><td>429,051,590원</td><td class="price-cell">103,231,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502748</td><td>대전 동구 자양동 48-12</td><td>1,308,251,340원</td><td class="price-cell">314,111,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.17</td></tr>
-          <tr><td>2025타경426</td><td>대전 유성구 송강동 294-13</td><td>1,273,292,400원</td><td class="price-cell">436,738,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2025타경500940</td><td>대전 서구 오동 314</td><td>898,319,000원</td><td class="price-cell">308,123,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경3908</td><td>대전 유성구 자우동 36-5</td><td>742,136,000원</td><td class="price-cell">363,647,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.17</td></tr>
-          <tr><td>2024타경6786</td><td>세종시 연기면 연기리 13-8 외</td><td>1,216,060,000원</td><td class="price-cell">595,869,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2024타경108934</td><td>세종시 연서면 신대리 30-7-3 외</td><td>3,596,784,000원</td><td class="price-cell">1,762,424,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-          <tr><td>2024타경110470 외 4건</td><td>세종시 연서면 봉암리 19-8-4</td><td>2,554,535,000원</td><td class="price-cell">613,273,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2024타경112704</td><td>세종시 연동면 노송골길 1 외</td><td>205,510,000원</td><td class="price-cell">70,490,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-          <tr><td>2024타경121500 외 2건</td><td>세종시 조치원읍 신안리 7-8</td><td>494,000,000원</td><td class="price-cell">169,442,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-          <tr><td>2024타경121746</td><td>세종시 전동면 노정리 505</td><td>485,021,000원</td><td class="price-cell">81,518,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경501873</td><td>세종시 연동면 노송리 33-7 외</td><td>1,924,099,210원</td><td class="price-cell">461,576,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502006</td><td>세종시 부강면 산수리 21 외</td><td>4,740,402,000원</td><td class="price-cell">1,556,979,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2025타경502251</td><td>세종시 전동면 노정리 23-7 외</td><td>1,924,099,210원</td><td class="price-cell">461,976,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502345</td><td>세종시 보람동 735</td><td>230,000,000원</td><td class="price-cell">78,890,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-          <tr><td>2025타경502376</td><td>세종시 반곡동 26</td><td>264,845,000원</td><td class="price-cell">90,842,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-          <tr><td>2025타경502403</td><td>세종시 금남면 본평리 57-20 외</td><td>2,183,845,160원</td><td class="price-cell">749,058,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경502555</td><td>세종시 정군면 몽울리 외 다수</td><td>2,694,800,000원</td><td class="price-cell">647,021,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경503344</td><td>세종시 정군면 대교리 74-17 외</td><td>1,277,551,000원</td><td class="price-cell">306,740,000원</td><td><span class="fail-badge">4회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경503860</td><td>세종시 연동면 남면리 33-7-49 외</td><td>696,645,540원</td><td class="price-cell">238,949,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
-        </tbody>
-      </table>
+    <div id="gl-panel-land-dj" class="gl-panel visible">
+      <p class="gl-count" id="gl-count-land-dj"></p>
+      <div class="gl-cards" id="gl-cards-land-dj"></div>
     </div>
-
-    <div id="tab-building" style="display:none;">
-      <table class="goldlist-table">
-        <thead>
-          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>2024타경6533 외 2건</td><td>세종시 시청대로 115 1층 101호</td><td>1,369,000,000원</td><td class="price-cell">956,300,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경6533 외 2건</td><td>세종시 시청대로 115 1층 103호</td><td>1,929,000,000원</td><td class="price-cell">1,350,300,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경6533 외 2건</td><td>세종시 시청대로 115 1층 104호</td><td>770,000,000원</td><td class="price-cell">539,000,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경6533 외 2건</td><td>세종시 시청대로 115 1층 106호</td><td>984,000,000원</td><td class="price-cell">688,800,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경7857 외 1건</td><td>세종시 시청대로 115 1층 101호</td><td>1,720,000,000원</td><td class="price-cell">1,204,000,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경7857 외 1건</td><td>세종시 시청대로 115 1층 109호</td><td>1,553,000,000원</td><td class="price-cell">1,087,100,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경7857 외 1건</td><td>세종시 시청대로 115 1층 115호</td><td>1,050,000,000원</td><td class="price-cell">735,000,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경10815</td><td>세종시 전균면 당암길 42 지하층 2호</td><td>531,000,000원</td><td class="price-cell">43,729,000원</td><td><span class="fail-badge">7회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2024타경11191</td><td>세종시 나성로 96 1층 104호</td><td>1,280,000,000원</td><td class="price-cell">439,040,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2024타경100862 외 3건</td><td>세종시 길목로 363 3층 315호</td><td>620,000,000원</td><td class="price-cell">148,862,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2024타경114977</td><td>세종시 전누리대로 587 8층 818호</td><td>91,000,000원</td><td class="price-cell">15,294,000원</td><td><span class="fail-badge">5회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2024타경115888</td><td>세종시 전누리대로 237 5층 514호</td><td>123,000,000원</td><td class="price-cell">4,963,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경501467 외 1건</td><td>세종시 대동 671 대왕빌딩 6층 685호</td><td>492,000,000원</td><td class="price-cell">168,756,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경501873</td><td>세종시 나성동 757 마분주 1동 8층 816호</td><td>129,000,000원</td><td class="price-cell">21,681,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-          <tr><td>2025타경501881</td><td>세종시 고문동 1372 메디파크 1동 3층 102호</td><td>393,000,000원</td><td class="price-cell">94,359,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2025타경502195</td><td>세종시 어진동 548 라움빌에스 5층 511호</td><td>120,000,000원</td><td class="price-cell">6,918,000원</td><td><span class="fail-badge">8회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경502261</td><td>세종시 이전동 656 부르지오사 18호 1849호</td><td>87,000,000원</td><td class="price-cell">5,015,000원</td><td><span class="fail-badge">8회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경502287</td><td>세종시 연기면 연기리 44-3-16</td><td>175,000,000원</td><td class="price-cell">10,088,000원</td><td><span class="fail-badge">8회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경502345</td><td>세종시 보람동 743 스타힐마 1동 6층 603호</td><td>123,000,000원</td><td class="price-cell">42,189,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502348</td><td>세종시 나성동 757 마분주 1동 4층 418호</td><td>142,000,000원</td><td class="price-cell">48,706,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2025타경502458</td><td>세종시 도담동 666 라온프리미엄 1동 9층 503호</td><td>88,000,000원</td><td class="price-cell">7,247,000원</td><td><span class="fail-badge">7회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경502494</td><td>세종시 나성동 739 새만빌라 2층 207호</td><td>113,000,000원</td><td class="price-cell">38,759,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-          <tr><td>2025타경502619</td><td>세종시 나성동 730 임마리아 13층 1322호</td><td>165,000,000원</td><td class="price-cell">56,595,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-          <tr><td>2025타경502667 외 3건</td><td>세종시 도담동 3550 헤미카리7 8층 801호</td><td>424,000,000원</td><td class="price-cell">145,432,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경502766</td><td>세종시 대동 665 시드 3동 307호</td><td>777,000,000원</td><td class="price-cell">91,414,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502814</td><td>세종시 나성동 713 미나스빌 1동 7층 709호</td><td>120,000,000원</td><td class="price-cell">20,168,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경502958</td><td>세종시 나성동 713 미나스빌 1동 8층 8208호</td><td>126,000,000원</td><td class="price-cell">43,218,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경502964</td><td>세종시 도남동 660 한서오피스 27-42㎡</td><td>105,000,000원</td><td class="price-cell">17,816,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.24</td></tr>
-          <tr><td>2025타경503174</td><td>세종시 대청동 680 리움빌리스 5동 5층 510호</td><td>135,000,000원</td><td class="price-cell">32,414,000원</td><td><span class="fail-badge">4회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경503227</td><td>세종시 나성동 796 조이다리 2층 208호</td><td>1,150,000,000원</td><td class="price-cell">394,450,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-          <tr><td>2025타경503378</td><td>세종시 미령동 664 뉴나시티 1동 115호</td><td>540,000,000원</td><td class="price-cell">185,220,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경503470</td><td>세종시 한국동 839 한국마루 1층 110호</td><td>886,000,000원</td><td class="price-cell">303,898,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.01</td></tr>
-          <tr><td>2025타경503694</td><td>세종시 이룡동 1332 엔보빌딩 2층 204호</td><td>657,000,000원</td><td class="price-cell">225,351,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.01</td></tr>
-        </tbody>
-      </table>
+    <div id="gl-panel-bld-dj" class="gl-panel">
+      <p class="gl-count" id="gl-count-bld-dj"></p>
+      <div class="gl-cards" id="gl-cards-bld-dj"></div>
     </div>
-
-    <div id="tab-cn-land">
-      <table class="goldlist-table">
-        <thead>
-          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
-        </thead>
-        <tbody>
-<tr><td>2023타경8563</td><td>충남 금산군 남면 상동리 63-24</td><td>473,399,000원</td><td class="price-cell">79,564,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>2025타경2453</td><td>충남 금산군 제원면 봉황리 12</td><td>334,238,750원</td><td class="price-cell">80,273,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>2025타경3549</td><td>충남 금산군 제원면 천내리 19 6-7</td><td>883,015,000원</td><td class="price-cell">212,013,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-<tr><td>2025타경3549</td><td>충남 금산군 금성면 파루리 194</td><td>1,403,620,595원</td><td class="price-cell">337,009,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.24</td></tr>
-<tr><td>2025타경502404</td><td>충남 금산군 복수면 수령리 1-2</td><td>99,960,000원</td><td class="price-cell">34,286,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>2025타경502426</td><td>충남 금산군 금성면 삼전리 49-1</td><td>169,092,440원</td><td class="price-cell">57,999,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>2025타경503034</td><td>충남 금산군 금성면 양전리 403</td><td>191,114,000원</td><td class="price-cell">65,551,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.02</td></tr>
-<tr><td>2025타경503424</td><td>충남 금산군 제원면 금평리 52-1</td><td>58,685,260원</td><td class="price-cell">14,090,000원</td><td><span class="fail-badge">4회</span></td><td>2026.07.01</td></tr>
-<tr><td>2025타경503797</td><td>충남 금산군 진산면 읍내리 73-1</td><td>907,338,000원</td><td class="price-cell">311,217,000원</td><td><span class="fail-badge">3회</span></td><td>2026.07.01</td></tr>
-<tr><td>홍성지원 2023타경15106 외</td><td>충남 보령시 남포면 달전리 67 9</td><td>2,426,388,000원</td><td class="price-cell">832,251,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2023타경21156</td><td>충남 예산군 예산읍 향천리 5</td><td>83,880,000원</td><td class="price-cell">28,771,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2023타경21156</td><td>충남 예산군 예산읍 향천리 신1 0</td><td>3,686,519,000원</td><td class="price-cell">1,264,476,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2023타경21156</td><td>충남 예산군 예산읍 향천리 22</td><td>108,270,000원</td><td class="price-cell">37,136,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2024타경20204</td><td>충남 당진시 면천면 성상리 33</td><td>164,000,000원</td><td class="price-cell">164,000,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2024타경21009 외</td><td>충남 서천군 장항읍 창선리 33</td><td>202,512,600원</td><td class="price-cell">34,036,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2024타경21054</td><td>충남 홍성군 대련면 연탄리 27 7-3</td><td>33,616,000원</td><td class="price-cell">8,071,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2024타경21429</td><td>충남 보령시 보령시 남보령 15 8-1</td><td>25,830,000원</td><td class="price-cell">4,341,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2024타경21795</td><td>충남 홍성군 홍성읍 대교리 65</td><td>3,255,990,000원</td><td class="price-cell">781,764,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2024타경21979</td><td>충남 보령시 남면 패시리 19 4</td><td>449,219,000원</td><td class="price-cell">449,219,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2024타경22163</td><td>충남 예산군 신교읍 학면리 19 3</td><td>111,000,000원</td><td class="price-cell">6,399,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경1006</td><td>충남 예산군 신교읍 발머리 11 8</td><td>238,190,000원</td><td class="price-cell">81,699,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경1016</td><td>충남 예산군 예산읍 매산읍 43 1-2 세덴미아파크</td><td>296,000,000원</td><td class="price-cell">101,528,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경1020</td><td>충남 홍성군 홍성읍 온뢰면 17 9-1</td><td>108,912,000원</td><td class="price-cell">37,357,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경1028</td><td>충남 예산군 오원면 원산도 3 33-6</td><td>9,304,900원</td><td class="price-cell">3,191,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경1036</td><td>충남 보령시 보령시 장균리 산 70-7</td><td>231,984,000원</td><td class="price-cell">79,570,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15421</td><td>충남 홍성군 홍성읍 학계리 52 8-2</td><td>202,515,000원</td><td class="price-cell">34,037,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경15591</td><td>충남 보령시 오현면 오현도 7 34-4</td><td>113,793,000원</td><td class="price-cell">13,388,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15653</td><td>충남 홍성군 홍성읍 대매리 32-1</td><td>83,220,000원</td><td class="price-cell">19,982,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15663</td><td>충남 홍성군 서부면 남당리 16 9-79</td><td>2,223,234,520원</td><td class="price-cell">373,659,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경15673</td><td>충남 홍성군 금계면 금리 71 2-1</td><td>21,813,000원</td><td class="price-cell">5,237,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15678</td><td>충남 홍성군 홍성읍 노룬 산1번 지</td><td>223,728,000원</td><td class="price-cell">76,739,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15704</td><td>충남 보령시 오현면 산 1-48</td><td>259,287,000원</td><td class="price-cell">88,936,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15729</td><td>충남 청양군 청소면 탄내리 20 5-7</td><td>118,080,000원</td><td class="price-cell">40,501,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15746</td><td>충남 예산군 삽교읍 목리 960 아파트</td><td>120,000,000원</td><td class="price-cell">120,000,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경15803</td><td>충남 홍성군 홍성읍 온뢰면 23 1</td><td>47,384,000원</td><td class="price-cell">11,377,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경15820</td><td>충남 예산군 삽교읍 목리 960 스물건</td><td>84,000,000원</td><td class="price-cell">28,812,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경15883</td><td>충남 홍성군 예산읍 연처읍 60 4-2</td><td>107,228,000원</td><td class="price-cell">36,779,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15984</td><td>충남 보령시 오현면 원산도 3 33-6</td><td>1,866,697,000원</td><td class="price-cell">640,277,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>논산지원 2025타경187</td><td>충남 논산시 관내 신동리 8-2 43</td><td>67,360,000원</td><td class="price-cell">7,525,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.22</td></tr>
-<tr><td>논산지원 2025타경309</td><td>충남 논산시 부적면 덕담리 12</td><td>38,012,000원</td><td class="price-cell">6,389,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.29</td></tr>
-<tr><td>논산지원 2025타경408</td><td>충남 논산시 상평면 상도리 46</td><td>131,365,000원</td><td class="price-cell">31,541,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>논산지원 2025타경20276</td><td>충남 논산시 부마로 외산면 부마리 24</td><td>5,197,070원</td><td class="price-cell">1,783,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>논산지원 2025타경20276</td><td>충남 논산시 부마로 외산면 부마리 36</td><td>4,038,070원</td><td class="price-cell">1,385,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>논산지원 2025타경20347</td><td>충남 논산시 부당동 374-1</td><td>210,984,000원</td><td class="price-cell">72,367,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.29</td></tr>
-<tr><td>논산지원 2025타경20418</td><td>충남 논산시 부적면 신고리 14 7-37</td><td>730,572,400원</td><td class="price-cell">511,400,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.29</td></tr>
-<tr><td>천안지원 2024타경4451</td><td>충남 천안시 혜명읍 홈리 산 32 6-10</td><td>73,335,590원</td><td class="price-cell">17,608,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2024타경6099</td><td>충남 아산시 음봉면 소들리 26-4</td><td>1,709,713,000원</td><td class="price-cell">586,431,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2024타경6099</td><td>충남 아산시 신유동 446-28</td><td>2,637,975,100원</td><td class="price-cell">904,826,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2024타경106890</td><td>충남 아산시 신유동 44 6-30</td><td>2,637,975,100원</td><td class="price-cell">904,826,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2024타경115207 외</td><td>충남 아산시 배방읍 수청리 산 26-5</td><td>987,780,000원</td><td class="price-cell">166,016,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경532</td><td>충남 아산시 아산시 81-10</td><td>2,291,600,000원</td><td class="price-cell">786,019,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경10217 외</td><td>충남 천안시 동남구 유량동 80-10</td><td>2,725,795,000원</td><td class="price-cell">934,948,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경10217 외</td><td>충남 천안시 동남구 유량동 81-2</td><td>2,725,795,000원</td><td class="price-cell">934,948,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11232</td><td>충남 천안시 서북구 성정동 성일길 121-1</td><td>35,109,000원</td><td class="price-cell">5,900,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11392</td><td>충남 천안시 서북구 쌍용동 18262㎡ 임야</td><td>725,106,000원</td><td class="price-cell">217,705,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11392</td><td>충남 천안시 서북구 쌍용동 174-8</td><td>725,106,000원</td><td class="price-cell">217,705,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11498</td><td>충남 천안시 서북구 성정동 24-70</td><td>1,502,300,000원</td><td class="price-cell">214,618,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11861</td><td>충남 천안시 서북구 사기음 모전 197-2</td><td>134,533,735원</td><td class="price-cell">32,302,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11861</td><td>충남 천안시 서북구 사기음 모전 197-2</td><td>134,533,735원</td><td class="price-cell">32,302,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경12017</td><td>충남 천안시 동남구 성남구 무학리 319</td><td>68,012,000원</td><td class="price-cell">8,002,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경12106</td><td>충남 천안시 서남구 수신면 산리 143-5 임야</td><td>534,163,548원</td><td class="price-cell">128,253,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>공주지원 2022타경786</td><td>충남 공주시 유구읍 방곡리 산2 6</td><td>6,405,713,000원</td><td class="price-cell">2,197,159,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경1332</td><td>충남 공주시 사곡면 신암리 산5-2</td><td>141,874,711원</td><td class="price-cell">34,064,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경20166</td><td>충남 공주시 유구읍 추계리 68 8</td><td>586,267,300원</td><td class="price-cell">201,089,600원</td><td><span class="fail-badge">7회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경21305</td><td>충남 공주시 유구읍 뷰구리 61-1</td><td>331,818,000원</td><td class="price-cell">55,768,500원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경21763</td><td>충남 공주시 탄천면 태봉리 335</td><td>16,362,040원</td><td class="price-cell">2,749,800원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경22124</td><td>충남 공주시 반포면 봉솔동 68-5</td><td>1,583,474,000원</td><td class="price-cell">543,131,500원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경22391</td><td>충남 공주시 신기동 264-1</td><td>81,657,000원</td><td class="price-cell">19,605,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2022타경786</td><td>충남 공주시 유구읍 방곡리 63</td><td>6,405,713,000원</td><td class="price-cell">2,197,159,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경1332</td><td>충남 공주시 사곡면 신암리 산 5-10</td><td>141,874,711원</td><td class="price-cell">34,064,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경20166</td><td>충남 공주시 유구읍 추계리 69 0-1</td><td>586,267,300원</td><td class="price-cell">201,089,600원</td><td><span class="fail-badge">7회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경21305</td><td>충남 공주시 유구읍 뷰구리 63</td><td>331,818,000원</td><td class="price-cell">55,768,500원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경22407</td><td>충남 공주시 유구읍 녀남리 25-5</td><td>317,574,000원</td><td class="price-cell">109,065,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2024타경462</td><td>충남 태안군 해먼군 소근면 산9-1</td><td>1,255,693,600원</td><td class="price-cell">430,702,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2024타경1243</td><td>충남 당진시 송악읍 홀리 93</td><td>470,705,000원</td><td class="price-cell">113,015,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2024타경1243</td><td>충남 당진시 송악읍 홀리 95-3</td><td>499,571,000원</td><td class="price-cell">120,042,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2024타경4037</td><td>충남 당진시 석문면 통정리 41 7-1</td><td>2,494,034,500원</td><td class="price-cell">855,454,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경4037</td><td>충남 당진시 석문면 통정리 41 7-5</td><td>2,494,034,500원</td><td class="price-cell">855,454,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경4877</td><td>충남 당진시 선문면 원당동 526-4</td><td>1,423,982,860원</td><td class="price-cell">488,426,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경4877</td><td>충남 당진시 선문면 원당동 563-9</td><td>1,423,982,860원</td><td class="price-cell">488,426,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경54896</td><td>충남 서산시 인지면 선리 506</td><td>168,834,500원</td><td class="price-cell">28,376,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경55271 외</td><td>충남 당진시 합덕읍 면대리 69 4-10</td><td>880,670,000원</td><td class="price-cell">302,069,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2024타경62293</td><td>충남 서산시 대산읍 모리리 33 8-83</td><td>54,516,000원</td><td class="price-cell">6,412,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경209</td><td>충남 당진시 송악읍 홀리 61-35</td><td>222,132,000원</td><td class="price-cell">53,333,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경261</td><td>충남 당진시 - 불리리 16</td><td>1,103,600,000원</td><td class="price-cell">185,483,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경511</td><td>충남 당진시 신평면 부수리 36 7</td><td>59,387,110원</td><td class="price-cell">6,987,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경572</td><td>충남 당진시 합덕읍 홀리 45 8-1</td><td>799,207,750원</td><td class="price-cell">274,127,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경572</td><td>충남 당진시 석문면 교로리 84 7-29</td><td>709,766,000원</td><td class="price-cell">243,449,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경580</td><td>충남 당진시 석문면 교로리 84 7-93</td><td>709,766,000원</td><td class="price-cell">243,449,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경629</td><td>충남 당진시 손선면 묵로리 58 0-2</td><td>101,767,000원</td><td class="price-cell">11,973,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경667</td><td>충남 서산시 대산읍 대로리 23 0-2</td><td>791,039,683원</td><td class="price-cell">271,325,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경667</td><td>충남 서산시 대산읍 대로리 23 0-12</td><td>791,039,683원</td><td class="price-cell">271,325,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경677</td><td>충남 당진시 서선면 선선리 83 9</td><td>715,423,000원</td><td class="price-cell">245,389,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경677</td><td>충남 당진시 석문면 교로리 840-14</td><td>715,423,000원</td><td class="price-cell">245,389,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경733</td><td>충남 서산시 태안면 - 임야 2795㎡</td><td>738,063,000원</td><td class="price-cell">253,155,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경50112 외</td><td>충남 당진시 신평면 목묵리 29 8-5-1</td><td>1,247,428,000원</td><td class="price-cell">299,508,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경50686</td><td>충남 당진시 서선면 선선리 93 5-9</td><td>600,618,000원</td><td class="price-cell">134,560,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51062</td><td>충남 당진시 합덕읍 한진리 16 5-2</td><td>348,610,000원</td><td class="price-cell">41,013,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51127</td><td>충남 서산시 고북면 봉생리 57 0-11</td><td>648,219,000원</td><td class="price-cell">108,946,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51227</td><td>충남 서산시 고북면 봉생리 57 0-11</td><td>536,669,960원</td><td class="price-cell">128,853,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51232</td><td>충남 서산시 시청동 기지시리 3</td><td>3,880,285,600원</td><td class="price-cell">931,657,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51318</td><td>충남 서산시 사직동 전 1355㎡</td><td>709,362,000원</td><td class="price-cell">170,317,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51318</td><td>충남 당진시 서산시 759 전 1937㎡</td><td>709,362,000원</td><td class="price-cell">170,317,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51329</td><td>충남 당진시 손선면 막산리 신1-1</td><td>464,256,000원</td><td class="price-cell">111,467,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51346</td><td>충남 당진시 구룡동 525</td><td>183,875,000원</td><td class="price-cell">44,147,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51368</td><td>충남 당진시 합덕읍 홀리 1-49</td><td>41,973,000원</td><td class="price-cell">14,396,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51382 외</td><td>충남 태안군 소원면 모항리 466-15</td><td>172,652,000원</td><td class="price-cell">59,219,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51391</td><td>충남 당진시 합덕읍 홀리 35 3-16</td><td>1,175,295,000원</td><td class="price-cell">282,187,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51391</td><td>충남 당진시 합덕읍 홀리 35 3-24</td><td>1,175,295,000원</td><td class="price-cell">282,187,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51408</td><td>충남 당진시 정미읍 산 5058㎡ 임야</td><td>546,264,000원</td><td class="price-cell">187,367,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51421</td><td>충남 당진시 석문면 산불리 25 1-26</td><td>1,316,427,000원</td><td class="price-cell">451,534,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51437</td><td>충남 당진시 합덕읍 벌리 71 6-1</td><td>64,140,670원</td><td class="price-cell">21,999,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51487</td><td>충남 서산시 서면 선면 초성리 1</td><td>26,757,000원</td><td class="price-cell">9,177,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51534</td><td>충남 당진시 합덕읍 홀리 117-1</td><td>706,384,000원</td><td class="price-cell">242,288,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51576</td><td>충남 당진시 석문면 통정리 27 1</td><td>289,279,000원</td><td class="price-cell">99,222,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-        </tbody>
-      </table>
+    <div id="gl-panel-land-cn" class="gl-panel">
+      <p class="gl-count" id="gl-count-land-cn"></p>
+      <div class="gl-cards" id="gl-cards-land-cn"></div>
     </div>
-
-    <div id="tab-cn-building" style="display:none;">
-      <table class="goldlist-table">
-        <thead>
-          <tr><th>사건번호</th><th>소재지</th><th>감정가</th><th>최저가</th><th>유찰</th><th>매각기일</th></tr>
-        </thead>
-        <tbody>
-<tr><td>홍성지원 2023타경1916 외</td><td>충남 서천군 시전동 서77 14동 5층 4호</td><td>128,000,000원</td><td class="price-cell">1,240,000원</td><td><span class="fail-badge">13회</span></td><td>2026.06.23</td></tr>
-<tr><td>홍성지원 2025타경355</td><td>충남 홍성군 홍성읍 월산리 53 0-9</td><td>375,494,000원</td><td class="price-cell">128,794,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.30</td></tr>
-<tr><td>홍성지원 2025타경15117</td><td>충남 당진시 보령 3번로 303호 (주중동, 비솔클럽아파트)</td><td>214,000,000원</td><td class="price-cell">214,000,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>논산지원 2024타경1008</td><td>충남 논산시 논산시 내동 281 아파트</td><td>258,000,000원</td><td class="price-cell">7,288,000원</td><td><span class="fail-badge">10회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2023타경108875</td><td>충남 천안시 서북구 김은리 1 26 근린시설</td><td>876,000,000원</td><td class="price-cell">300,468,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2023타경108875</td><td>충남 천안시 서북구 김은리 1 26 2동</td><td>440,800,000원</td><td class="price-cell">151,194,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2024타경114082</td><td>충남 천안시 서북구 두정로 23 6 7동 (두정동,스티파플러스)</td><td>66,000,000원</td><td class="price-cell">1,865,000원</td><td><span class="fail-badge">10회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2024타경116293</td><td>충남 천안시 서북구 두정로 23 6 1동 (두정동,유진원파크)</td><td>109,000,000원</td><td class="price-cell">53,410,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경423</td><td>충남 천안시 서북구 쌍용동 21 0-21 상가·오피스텔</td><td>780,000,000원</td><td class="price-cell">267,540,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경426</td><td>충남 천안시 동남구 쌍용동 23 7-5 미클테스 7층 703호</td><td>138,000,000원</td><td class="price-cell">16,236,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경519</td><td>충남 아산시 탕정면 유토리 72 8 유니온101 1동 2층 232호</td><td>219,000,000원</td><td class="price-cell">52,562,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경545</td><td>충남 천안시 서북구 박서성 86 8 엔트로빌딩2기 3동 305호</td><td>99,000,000원</td><td class="price-cell">69,300,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경548</td><td>충남 천안시 서남구 풀당동 14 85 근린상가 529.8㎡</td><td>3,960,000,000원</td><td class="price-cell">665,557,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경633</td><td>충남 천안시 동남구 봉안동 27 0-1 아파트</td><td>86,000,000원</td><td class="price-cell">14,454,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경660</td><td>충남 천안시 서북구 성정동 12 70 상가·오피스텔</td><td>64,000,000원</td><td class="price-cell">44,800,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경10262</td><td>충남 천안시 서북구 성정동 3층 111-10 (춘천동, 봉담도)</td><td>110,000,000원</td><td class="price-cell">4,439,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경10842</td><td>충남 천안시 서북구 봉정동 17 25 3동5호 (생활, 임일빌라)</td><td>155,000,000원</td><td class="price-cell">6,255,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11203</td><td>충남 천안시 서북구 두정동 52 7 구글아파트 203호</td><td>162,000,000원</td><td class="price-cell">6,537,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11344</td><td>충남 천안시 서북구 쌍용동 14 33 근린상가 419.5㎡</td><td>4,700,000,000원</td><td class="price-cell">1,128,470,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11405</td><td>충남 아산시 배방읍 세아리 15 35 아파트 305호 7층 8701㎡</td><td>227,000,000원</td><td class="price-cell">18,694,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11465</td><td>충남 천안시 서북구 두정동 52 5-1 가우디아파트 103동 6층604호</td><td>181,000,000원</td><td class="price-cell">21,285,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11529</td><td>충남 천안시 서북구 성정동 13 45 상가스텔,건시설 30,479㎡</td><td>81,000,000원</td><td class="price-cell">6,671,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11645</td><td>충남 천안시 동남구 쌍용동 14 79 핵미다 인사이드이오아스텔 22.4㎡</td><td>135,000,000원</td><td class="price-cell">46,305,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11650</td><td>충남 천안시 서남구 선면 17 88 아산에코노빌리아더리 주72.34㎡</td><td>216,000,000원</td><td class="price-cell">74,088,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11858</td><td>충남 천안시 서북구 쌍용동 68 4 스마리라 3동 305호 8.92㎡</td><td>568,000,000원</td><td class="price-cell">194,824,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경11893</td><td>충남 천안시 서남구 청당동 신청당 308-3 연판주택 46.04㎡</td><td>114,000,000원</td><td class="price-cell">39,102,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11901</td><td>충남 천안시 서북구 성장동 14 85 아르테미아아파트 12층 1236호</td><td>59,000,000원</td><td class="price-cell">9,516,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경11962</td><td>충남 아산시 풍장동 193-3 복합빌딩59.41㎡</td><td>220,000,000원</td><td class="price-cell">36,975,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경12016</td><td>충남 아산시 본양리 18 5 아산에코노빌리아더리101동 6층 102호</td><td>222,000,000원</td><td class="price-cell">26,118,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.22</td></tr>
-<tr><td>천안지원 2025타경12135</td><td>충남 천안시 동남구 청당동 50 6 9동901호 근린시설</td><td>254,000,000원</td><td class="price-cell">87,122,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>천안지원 2025타경12320</td><td>충남 천안시 서북구 성정동 14 33 트로자10아파트 1층114호</td><td>798,000,000원</td><td class="price-cell">273,714,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경22353</td><td>충남 공주시 시내동 7810동 2동 202호 (탄남동,빌라테스)</td><td>85,000,000원</td><td class="price-cell">29,155,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>공주지원 2024타경22353</td><td>충남 공주시 시내동 7810동 4동 402호 (탄남동,빌라테스)</td><td>86,000,000원</td><td class="price-cell">29,498,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2023타경4702</td><td>충남 당진시 합덕읍 솔막규로 70 근린생활시설 슬라브건물</td><td>969,918,500원</td><td class="price-cell">475,260,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2023타경5187</td><td>충남 서산시 성연면 성연로 45 1동102호 이연귀브오피스텔</td><td>595,000,000원</td><td class="price-cell">70,119,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2023타경5187</td><td>충남 서산시 성연면 성연로 45 1동103호 이연귀브오피스텔</td><td>498,000,000원</td><td class="price-cell">58,589,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2023타경5187</td><td>충남 서산시 성연면 성연로 45 1동104호</td><td>491,000,000원</td><td class="price-cell">57,765,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2023타경5187</td><td>충남 서산시 성연면 성연로 45 1동106호</td><td>568,000,000원</td><td class="price-cell">66,825,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경3140 외</td><td>충남 당진시 금내동 310-58 상가</td><td>4,063,509,000원</td><td class="price-cell">975,648,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경2821</td><td>충남 서산시 중음동 639-2 상가·오피스텔 근전생활시설</td><td>123,000,000원</td><td class="price-cell">29,532,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경58409</td><td>충남 당진시 송악읍 한번로 10 1동 3동 302호 (송악아파트)</td><td>196,000,000원</td><td class="price-cell">7,909,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경59990</td><td>충남 당진시 솔선면 270-42 1층102호 철근콘크리트 67.0㎡</td><td>140,000,000원</td><td class="price-cell">3,955,000원</td><td><span class="fail-badge">10회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2024타경60112</td><td>충남 당진시 쏠선면 한번로 25 7-5 4층 상가</td><td>107,532,000원</td><td class="price-cell">4,339,000원</td><td><span class="fail-badge">9회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경668</td><td>충남 당진시 합덕읍 원내밀로 114 8층 8층 805호 (이연귀브오피스텔)</td><td>170,000,000원</td><td class="price-cell">20,000,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경50716</td><td>충남 당진시 손선면 아전리 147 아파트</td><td>558,774,000원</td><td class="price-cell">134,160,000원</td><td><span class="fail-badge">4회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51092</td><td>충남 서산시 석찰동 사전대로 104 8양11동6층102호 아파트</td><td>257,000,000원</td><td class="price-cell">21,164,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51124</td><td>충남 서산시 사기동 133-6-1 아파트</td><td>83,000,000원</td><td class="price-cell">4,785,000원</td><td><span class="fail-badge">8회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51186</td><td>충남 서산시 서산시 아파트</td><td>179,000,000원</td><td class="price-cell">30,085,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51257</td><td>충남 서산시 석찰동 962 아파트 102동 8층 704호</td><td>223,000,000원</td><td class="price-cell">18,364,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51292</td><td>충남 당진시 금내동 1486 203호 아파트 75.64㎡</td><td>231,000,000원</td><td class="price-cell">19,023,000원</td><td><span class="fail-badge">7회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51295</td><td>충남 당진시 합덕읍 홀미 88 7 유진종합아파트 101동 6층 4호</td><td>129,000,000원</td><td class="price-cell">15,177,000원</td><td><span class="fail-badge">6회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51406</td><td>충남 서산시 석찰동 962 아파트 1동 4층 8층704호</td><td>260,000,000원</td><td class="price-cell">43,698,000원</td><td><span class="fail-badge">5회</span></td><td>2026.06.30</td></tr>
-<tr><td>서산지원 2025타경51413</td><td>충남 서산시 시내동 624-5 2층 아파트 69.72㎡</td><td>86,000,000원</td><td class="price-cell">29,498,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51520</td><td>충남 서산시 서산시 102-125 고오블레아에크리 13층 1316호</td><td>162,000,000원</td><td class="price-cell">55,566,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51547</td><td>충남 당진시 합내동 232-1 당 진타위 1동 1층201호</td><td>514,000,000원</td><td class="price-cell">176,302,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51547</td><td>충남 당진시 합내동 232-1 당 진타위 4동 4층 40호</td><td>127,000,000원</td><td class="price-cell">43,561,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51547</td><td>충남 당진시 합내동 232-1 당 진타위 5동 1층101호</td><td>2,670,000,000원</td><td class="price-cell">915,810,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51547</td><td>충남 당진시 합내동 232-1 당 진타위 9동 3층 302호</td><td>547,000,000원</td><td class="price-cell">187,621,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-<tr><td>서산지원 2025타경51573</td><td>충남 서산시 서산시 서선면 17 88 아파트 84.9㎡</td><td>203,000,000원</td><td class="price-cell">69,629,000원</td><td><span class="fail-badge">3회</span></td><td>2026.06.23</td></tr>
-        </tbody>
-      </table>
+    <div id="gl-panel-bld-cn" class="gl-panel">
+      <p class="gl-count" id="gl-count-bld-cn"></p>
+      <div class="gl-cards" id="gl-cards-bld-cn"></div>
     </div>
 
     <div class="goldlist-cta">
@@ -518,7 +302,7 @@ function switchTab(tab) {
 
 <section class="subscribe-section" id="subscribe">
   <div class="subscribe-inner">
-</div>
+  </div>
 </section>
 
 <section class="section" id="blog">
@@ -597,29 +381,295 @@ function switchTab(tab) {
 </footer>
 
 <script>
-    const KAKAO_JS_KEY = '1881df343aff349d89e0a99987adfc34';
-    const REDIRECT_URI = 'https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html';
-    Kakao.init('40c094b3929dddd489f0e188fdaf11f5');
-    function kakaoLogin() {
-        window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=1881df343aff349d89e0a99987adfc34&redirect_uri=https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html&response_type=code';
-    }
-    function kakaoLogout() {
-        Kakao.Auth.logout(() => {
-            sessionStorage.removeItem('kakao_user');
-            document.getElementById('kakao-login-btn').style.display = 'flex';
-            document.getElementById('kakao-user-area').style.display = 'none';
-        });
-    }
-    window.addEventListener('load', () => {
-        const loggedIn = sessionStorage.getItem('kakao_logged_in');
-        const nickname = sessionStorage.getItem('kakao_nickname') || '회원';
-        if (loggedIn) {
-            document.getElementById('kakao-login-btn').style.display = 'none';
-            document.getElementById('kakao-user-area').style.display = 'flex';
-            document.getElementById('kakao-user-name').textContent = nickname + '님';
-        }
-    });
+/* =============================================
+   골드리스트 카드 데이터 & 렌더러
+   ============================================= */
+const GL_DATA = {
+  'land-dj': [
+    {c:'2024타경110586',a:'대전 동구 자양동 87-23',ap:'763,311,400',mn:'30,794,000',f:9,d:'2026.06.17'},
+    {c:'2023타경115492',a:'대전 중구 사령동 3-1',ap:'429,051,590',mn:'103,231,000',f:4,d:'2026.06.24'},
+    {c:'2025타경502748',a:'대전 동구 자양동 48-12',ap:'1,308,251,340',mn:'314,111,000',f:4,d:'2026.06.17'},
+    {c:'2025타경426',a:'대전 유성구 송강동 294-13',ap:'1,273,292,400',mn:'436,738,000',f:3,d:'2026.06.22'},
+    {c:'2025타경500940',a:'대전 서구 오동 314',ap:'898,319,000',mn:'308,123,000',f:3,d:'2026.06.24'},
+    {c:'2025타경3908',a:'대전 유성구 자우동 36-5',ap:'742,136,000',mn:'363,647,000',f:3,d:'2026.06.17'},
+    {c:'2024타경6786',a:'세종시 연기면 연기리 13-8',ap:'1,216,060,000',mn:'595,869,000',f:5,d:'2026.06.22'},
+    {c:'2024타경108934',a:'세종시 연서면 신대리 30-7',ap:'3,596,784,000',mn:'1,762,424,000',f:6,d:'2026.06.23'},
+    {c:'2024타경110470',a:'세종시 연서면 봉암리 19-8-4',ap:'2,554,535,000',mn:'613,273,000',f:4,d:'2026.06.24'},
+    {c:'2024타경112704',a:'세종시 연동면 노송골길 1',ap:'205,510,000',mn:'70,490,000',f:3,d:'2026.06.30'},
+    {c:'2024타경121500',a:'세종시 조치원읍 신안리 7-8',ap:'494,000,000',mn:'169,442,000',f:3,d:'2026.06.23'},
+    {c:'2024타경121746',a:'세종시 전동면 노정리 505',ap:'485,021,000',mn:'81,518,000',f:5,d:'2026.06.24'},
+    {c:'2025타경501873',a:'세종시 연동면 노송리 33-7',ap:'1,924,099,210',mn:'461,576,000',f:4,d:'2026.06.24'},
+    {c:'2025타경502006',a:'세종시 부강면 산수리 21',ap:'4,740,402,000',mn:'1,556,979,000',f:3,d:'2026.06.22'},
+    {c:'2025타경502251',a:'세종시 전동면 노정리 23-7',ap:'1,924,099,210',mn:'461,976,000',f:4,d:'2026.06.24'},
+    {c:'2025타경502345',a:'세종시 보람동 735',ap:'230,000,000',mn:'78,890,000',f:3,d:'2026.06.23'},
+    {c:'2025타경502376',a:'세종시 반곡동 26',ap:'264,845,000',mn:'90,842,000',f:3,d:'2026.06.23'},
+    {c:'2025타경502403',a:'세종시 금남면 본평리 57-20',ap:'2,183,845,160',mn:'749,058,000',f:3,d:'2026.07.02'},
+    {c:'2025타경502555',a:'세종시 정군면 몽울리 일대',ap:'2,694,800,000',mn:'647,021,000',f:4,d:'2026.06.24'},
+    {c:'2025타경503344',a:'세종시 정군면 대교리 74-17',ap:'1,277,551,000',mn:'306,740,000',f:4,d:'2026.07.01'},
+    {c:'2025타경503860',a:'세종시 연동면 남면리 33-7',ap:'696,645,540',mn:'238,949,000',f:3,d:'2026.06.24'},
+  ],
+  'bld-dj': [
+    {c:'2024타경6533',a:'세종시 시청대로 115 1층 101호',ap:'1,369,000,000',mn:'956,300,000',f:3,d:'2026.07.02'},
+    {c:'2024타경6533',a:'세종시 시청대로 115 1층 103호',ap:'1,929,000,000',mn:'1,350,300,000',f:3,d:'2026.07.02'},
+    {c:'2024타경6533',a:'세종시 시청대로 115 1층 104호',ap:'770,000,000',mn:'539,000,000',f:3,d:'2026.07.02'},
+    {c:'2024타경6533',a:'세종시 시청대로 115 1층 106호',ap:'984,000,000',mn:'688,800,000',f:3,d:'2026.07.02'},
+    {c:'2024타경7857',a:'세종시 시청대로 115 1층 101호',ap:'1,720,000,000',mn:'1,204,000,000',f:3,d:'2026.07.02'},
+    {c:'2024타경7857',a:'세종시 시청대로 115 1층 109호',ap:'1,553,000,000',mn:'1,087,100,000',f:3,d:'2026.07.02'},
+    {c:'2024타경7857',a:'세종시 시청대로 115 1층 115호',ap:'1,050,000,000',mn:'735,000,000',f:3,d:'2026.07.02'},
+    {c:'2024타경10815',a:'세종시 전균면 당암길 42 지하 2호',ap:'531,000,000',mn:'43,729,000',f:7,d:'2026.07.02'},
+    {c:'2024타경11191',a:'세종시 나성로 96 1층 104호',ap:'1,280,000,000',mn:'439,040,000',f:3,d:'2026.07.01'},
+    {c:'2024타경100862',a:'세종시 길목로 363 3층 315호',ap:'620,000,000',mn:'148,862,000',f:4,d:'2026.06.24'},
+    {c:'2024타경114977',a:'세종시 전누리대로 587 8층 818호',ap:'91,000,000',mn:'15,294,000',f:5,d:'2026.07.01'},
+    {c:'2024타경115888',a:'세종시 전누리대로 237 5층 514호',ap:'123,000,000',mn:'4,963,000',f:9,d:'2026.06.24'},
+    {c:'2025타경501467',a:'세종시 대동 671 대왕빌딩 6층 685호',ap:'492,000,000',mn:'168,756,000',f:3,d:'2026.06.24'},
+    {c:'2025타경501873',a:'세종시 나성동 757 마분주 1동 8층 816호',ap:'129,000,000',mn:'21,681,000',f:5,d:'2026.06.30'},
+    {c:'2025타경501881',a:'세종시 고문동 1372 메디파크 1동 3층 102호',ap:'393,000,000',mn:'94,359,000',f:4,d:'2026.06.22'},
+    {c:'2025타경502195',a:'세종시 어진동 548 라움빌에스 5층 511호',ap:'120,000,000',mn:'6,918,000',f:8,d:'2026.07.02'},
+    {c:'2025타경502261',a:'세종시 이전동 656 부르지오사 18동 1849호',ap:'87,000,000',mn:'5,015,000',f:8,d:'2026.07.02'},
+    {c:'2025타경502287',a:'세종시 연기면 연기리 44-3-16',ap:'175,000,000',mn:'10,088,000',f:8,d:'2026.07.01'},
+    {c:'2025타경502345',a:'세종시 보람동 743 스타힐마 1동 6층 603호',ap:'123,000,000',mn:'42,189,000',f:3,d:'2026.06.24'},
+    {c:'2025타경502348',a:'세종시 나성동 757 마분주 1동 4층 418호',ap:'142,000,000',mn:'48,706,000',f:3,d:'2026.06.22'},
+    {c:'2025타경502458',a:'세종시 도담동 666 라온프리미엄 1동 9층',ap:'88,000,000',mn:'7,247,000',f:7,d:'2026.07.01'},
+    {c:'2025타경502494',a:'세종시 나성동 739 새만빌라 2층 207호',ap:'113,000,000',mn:'38,759,000',f:3,d:'2026.06.22'},
+    {c:'2025타경502619',a:'세종시 나성동 730 임마리아 13층 1322호',ap:'165,000,000',mn:'56,595,000',f:3,d:'2026.06.23'},
+    {c:'2025타경502667',a:'세종시 도담동 3550 헤미카리7 8층 801호',ap:'424,000,000',mn:'145,432,000',f:3,d:'2026.07.02'},
+    {c:'2025타경502766',a:'세종시 대동 665 시드 3동 307호',ap:'777,000,000',mn:'91,414,000',f:6,d:'2026.06.24'},
+    {c:'2025타경502814',a:'세종시 나성동 713 미나스빌 1동 7층 709호',ap:'120,000,000',mn:'20,168,000',f:5,d:'2026.06.24'},
+    {c:'2025타경502958',a:'세종시 나성동 713 미나스빌 1동 8층 8208호',ap:'126,000,000',mn:'43,218,000',f:3,d:'2026.07.02'},
+    {c:'2025타경502964',a:'세종시 도남동 660 한서오피스',ap:'105,000,000',mn:'17,816,000',f:5,d:'2026.06.24'},
+    {c:'2025타경503174',a:'세종시 대청동 680 리움빌리스 5동 5층 510호',ap:'135,000,000',mn:'32,414,000',f:4,d:'2026.07.01'},
+    {c:'2025타경503227',a:'세종시 나성동 796 조이다리 2층 208호',ap:'1,150,000,000',mn:'394,450,000',f:3,d:'2026.07.02'},
+    {c:'2025타경503378',a:'세종시 미령동 664 뉴나시티 1동 115호',ap:'540,000,000',mn:'185,220,000',f:3,d:'2026.07.01'},
+    {c:'2025타경503470',a:'세종시 한국동 839 한국마루 1층 110호',ap:'886,000,000',mn:'303,898,000',f:3,d:'2026.07.01'},
+    {c:'2025타경503694',a:'세종시 이룡동 1332 엔보빌딩 2층 204호',ap:'657,000,000',mn:'225,351,000',f:3,d:'2026.07.01'},
+  ],
+  'land-cn': [
+    {c:'2023타경8563',a:'충남 금산군 남면 상동리 63-24',ap:'473,399,000',mn:'79,564,000',f:5,d:'2026.06.30'},
+    {c:'2025타경2453',a:'충남 금산군 제원면 봉황리 12',ap:'334,238,750',mn:'80,273,000',f:4,d:'2026.06.22'},
+    {c:'2025타경3549',a:'충남 금산군 제원면 천내리 19',ap:'883,015,000',mn:'212,013,000',f:4,d:'2026.06.24'},
+    {c:'2025타경3549',a:'충남 금산군 금성면 파루리 194',ap:'1,403,620,595',mn:'337,009,000',f:4,d:'2026.06.24'},
+    {c:'2025타경502404',a:'충남 금산군 복수면 수령리 1-2',ap:'99,960,000',mn:'34,286,000',f:3,d:'2026.06.23'},
+    {c:'2025타경502426',a:'충남 금산군 금성면 삼전리 49-1',ap:'169,092,440',mn:'57,999,000',f:3,d:'2026.06.23'},
+    {c:'2025타경503034',a:'충남 금산군 금성면 양전리 403',ap:'191,114,000',mn:'65,551,000',f:3,d:'2026.07.02'},
+    {c:'2025타경503424',a:'충남 금산군 제원면 금평리 52-1',ap:'58,685,260',mn:'14,090,000',f:4,d:'2026.07.01'},
+    {c:'2025타경503797',a:'충남 금산군 진산면 읍내리 73-1',ap:'907,338,000',mn:'311,217,000',f:3,d:'2026.07.01'},
+    {c:'홍성지원 2023타경15106',a:'충남 보령시 남포면 달전리 67',ap:'2,426,388,000',mn:'832,251,000',f:3,d:'2026.06.30'},
+    {c:'홍성지원 2023타경21156',a:'충남 예산군 예산읍 향천리 5',ap:'83,880,000',mn:'28,771,000',f:3,d:'2026.06.30'},
+    {c:'홍성지원 2024타경20204',a:'충남 당진시 면천면 성상리 33',ap:'164,000,000',mn:'164,000,000',f:9,d:'2026.06.30'},
+    {c:'홍성지원 2024타경21009',a:'충남 서천군 장항읍 창선리 33',ap:'202,512,600',mn:'34,036,000',f:5,d:'2026.06.30'},
+    {c:'홍성지원 2024타경21429',a:'충남 보령시 남보령 158-1',ap:'25,830,000',mn:'4,341,000',f:5,d:'2026.06.30'},
+    {c:'홍성지원 2024타경21795',a:'충남 홍성군 홍성읍 대교리 65',ap:'3,255,990,000',mn:'781,764,000',f:4,d:'2026.06.23'},
+    {c:'홍성지원 2024타경22163',a:'충남 예산군 신교읍 학면리 193',ap:'111,000,000',mn:'6,399,000',f:6,d:'2026.06.30'},
+    {c:'홍성지원 2025타경15421',a:'충남 홍성군 홍성읍 학계리 528-2',ap:'202,515,000',mn:'34,037,000',f:5,d:'2026.06.23'},
+    {c:'홍성지원 2025타경15591',a:'충남 보령시 오현면 오현도 734-4',ap:'113,793,000',mn:'13,388,000',f:6,d:'2026.06.30'},
+    {c:'홍성지원 2025타경15663',a:'충남 홍성군 서부면 남당리 169-79',ap:'2,223,234,520',mn:'373,659,000',f:5,d:'2026.06.23'},
+    {c:'홍성지원 2025타경15984',a:'충남 보령시 오현면 원산도 333-6',ap:'1,866,697,000',mn:'640,277,000',f:3,d:'2026.06.30'},
+    {c:'논산지원 2025타경187',a:'충남 논산시 신동리 8-2',ap:'67,360,000',mn:'7,525,000',f:6,d:'2026.06.22'},
+    {c:'논산지원 2025타경309',a:'충남 논산시 부적면 덕담리 12',ap:'38,012,000',mn:'6,389,000',f:5,d:'2026.06.29'},
+    {c:'논산지원 2025타경408',a:'충남 논산시 상평면 상도리 46',ap:'131,365,000',mn:'31,541,000',f:4,d:'2026.06.22'},
+    {c:'논산지원 2025타경20418',a:'충남 논산시 부적면 신고리 147-37',ap:'730,572,400',mn:'511,400,000',f:4,d:'2026.06.29'},
+    {c:'천안지원 2024타경4451',a:'충남 천안시 혜명읍 홈리 산326-10',ap:'73,335,590',mn:'17,608,000',f:4,d:'2026.06.23'},
+    {c:'천안지원 2024타경6099',a:'충남 아산시 음봉면 소들리 26-4',ap:'1,709,713,000',mn:'586,431,000',f:3,d:'2026.06.23'},
+    {c:'천안지원 2024타경115207',a:'충남 아산시 배방읍 수청리 산26-5',ap:'987,780,000',mn:'166,016,000',f:5,d:'2026.06.23'},
+    {c:'천안지원 2025타경532',a:'충남 아산시 81-10',ap:'2,291,600,000',mn:'786,019,000',f:3,d:'2026.06.22'},
+    {c:'천안지원 2025타경11232',a:'충남 천안시 서북구 성정동 성일길 121-1',ap:'35,109,000',mn:'5,900,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경11392',a:'충남 천안시 서북구 쌍용동 임야',ap:'725,106,000',mn:'217,705,000',f:3,d:'2026.06.22'},
+    {c:'천안지원 2025타경11498',a:'충남 천안시 서북구 성정동 24-70',ap:'1,502,300,000',mn:'214,618,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경11861',a:'충남 천안시 서북구 사기음 모전 197-2',ap:'134,533,735',mn:'32,302,000',f:4,d:'2026.06.22'},
+    {c:'천안지원 2025타경12017',a:'충남 천안시 동남구 무학리 319',ap:'68,012,000',mn:'8,002,000',f:6,d:'2026.06.22'},
+    {c:'천안지원 2025타경12106',a:'충남 천안시 서남구 수신면 산리 143-5 임야',ap:'534,163,548',mn:'128,253,000',f:4,d:'2026.06.22'},
+    {c:'공주지원 2022타경786',a:'충남 공주시 유구읍 방곡리 산26',ap:'6,405,713,000',mn:'2,197,159,000',f:4,d:'2026.06.23'},
+    {c:'공주지원 2024타경1332',a:'충남 공주시 사곡면 신암리 산5-2',ap:'141,874,711',mn:'34,064,000',f:4,d:'2026.06.23'},
+    {c:'공주지원 2024타경20166',a:'충남 공주시 유구읍 추계리 688',ap:'586,267,300',mn:'201,089,600',f:7,d:'2026.06.23'},
+    {c:'공주지원 2024타경21305',a:'충남 공주시 유구읍 뷰구리 61-1',ap:'331,818,000',mn:'55,768,500',f:5,d:'2026.06.23'},
+    {c:'공주지원 2024타경21763',a:'충남 공주시 탄천면 태봉리 335',ap:'16,362,040',mn:'2,749,800',f:5,d:'2026.06.23'},
+    {c:'공주지원 2024타경22124',a:'충남 공주시 반포면 봉솔동 68-5',ap:'1,583,474,000',mn:'543,131,500',f:3,d:'2026.06.23'},
+    {c:'공주지원 2024타경22391',a:'충남 공주시 신기동 264-1',ap:'81,657,000',mn:'19,605,000',f:4,d:'2026.06.23'},
+    {c:'공주지원 2024타경22407',a:'충남 공주시 유구읍 녀남리 25-5',ap:'317,574,000',mn:'109,065,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2024타경462',a:'충남 태안군 소근면 산9-1',ap:'1,255,693,600',mn:'430,702,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2024타경1243',a:'충남 당진시 송악읍 홀리 93',ap:'470,705,000',mn:'113,015,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2024타경4037',a:'충남 당진시 석문면 통정리 417-1',ap:'2,494,034,500',mn:'855,454,000',f:3,d:'2026.06.30'},
+    {c:'서산지원 2024타경4877',a:'충남 당진시 선문면 원당동 526-4',ap:'1,423,982,860',mn:'488,426,000',f:3,d:'2026.06.30'},
+    {c:'서산지원 2024타경54896',a:'충남 서산시 인지면 선리 506',ap:'168,834,500',mn:'28,376,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2024타경55271',a:'충남 당진시 합덕읍 면대리 694-10',ap:'880,670,000',mn:'302,069,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2024타경62293',a:'충남 서산시 대산읍 모리리 338-83',ap:'54,516,000',mn:'6,412,000',f:6,d:'2026.06.23'},
+    {c:'서산지원 2025타경209',a:'충남 당진시 송악읍 홀리 61-35',ap:'222,132,000',mn:'53,333,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경261',a:'충남 당진시 불리리 16',ap:'1,103,600,000',mn:'185,483,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2025타경511',a:'충남 당진시 신평면 부수리 367',ap:'59,387,110',mn:'6,987,000',f:6,d:'2026.06.30'},
+    {c:'서산지원 2025타경572',a:'충남 당진시 합덕읍 홀리 458-1',ap:'799,207,750',mn:'274,127,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경629',a:'충남 당진시 손선면 묵로리 580-2',ap:'101,767,000',mn:'11,973,000',f:6,d:'2026.06.30'},
+    {c:'서산지원 2025타경667',a:'충남 서산시 대산읍 대로리 230-2',ap:'791,039,683',mn:'271,325,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경677',a:'충남 당진시 서선면 선선리 839',ap:'715,423,000',mn:'245,389,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경733',a:'충남 서산시 태안면 임야 2795㎡',ap:'738,063,000',mn:'253,155,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경50112',a:'충남 당진시 신평면 목묵리 298-5-1',ap:'1,247,428,000',mn:'299,508,000',f:4,d:'2026.06.30'},
+    {c:'서산지원 2025타경50686',a:'충남 당진시 서선면 선선리 935-9',ap:'600,618,000',mn:'134,560,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2025타경51062',a:'충남 당진시 합덕읍 한진리 165-2',ap:'348,610,000',mn:'41,013,000',f:6,d:'2026.06.23'},
+    {c:'서산지원 2025타경51127',a:'충남 서산시 고북면 봉생리 570-11',ap:'648,219,000',mn:'108,946,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2025타경51227',a:'충남 서산시 고북면 봉생리 570-11',ap:'536,669,960',mn:'128,853,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51232',a:'충남 서산시 시청동 기지시리 3',ap:'3,880,285,600',mn:'931,657,000',f:4,d:'2026.06.30'},
+    {c:'서산지원 2025타경51318',a:'충남 서산시 사직동 전 1355㎡',ap:'709,362,000',mn:'170,317,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51329',a:'충남 당진시 손선면 막산리 신1-1',ap:'464,256,000',mn:'111,467,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51346',a:'충남 당진시 구룡동 525',ap:'183,875,000',mn:'44,147,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51368',a:'충남 당진시 합덕읍 홀리 1-49',ap:'41,973,000',mn:'14,396,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51382',a:'충남 태안군 소원면 모항리 466-15',ap:'172,652,000',mn:'59,219,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51391',a:'충남 당진시 합덕읍 홀리 353-16',ap:'1,175,295,000',mn:'282,187,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51408',a:'충남 당진시 정미읍 임야 5058㎡',ap:'546,264,000',mn:'187,367,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51421',a:'충남 당진시 석문면 산불리 251-26',ap:'1,316,427,000',mn:'451,534,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51437',a:'충남 당진시 합덕읍 벌리 716-1',ap:'64,140,670',mn:'21,999,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51487',a:'충남 서산시 서면 초성리 1',ap:'26,757,000',mn:'9,177,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51534',a:'충남 당진시 합덕읍 홀리 117-1',ap:'706,384,000',mn:'242,288,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51576',a:'충남 당진시 석문면 통정리 271',ap:'289,279,000',mn:'99,222,000',f:3,d:'2026.06.23'},
+  ],
+  'bld-cn': [
+    {c:'홍성지원 2023타경1916',a:'충남 서천군 시전동 서77 14동 5층 4호',ap:'128,000,000',mn:'1,240,000',f:13,d:'2026.06.23'},
+    {c:'홍성지원 2025타경355',a:'충남 홍성군 홍성읍 월산리 530-9',ap:'375,494,000',mn:'128,794,000',f:3,d:'2026.06.30'},
+    {c:'홍성지원 2025타경15117',a:'충남 당진시 보령 3번로 303호 (비솔클럽아파트)',ap:'214,000,000',mn:'214,000,000',f:5,d:'2026.06.23'},
+    {c:'논산지원 2024타경1008',a:'충남 논산시 내동 281 아파트',ap:'258,000,000',mn:'7,288,000',f:10,d:'2026.06.22'},
+    {c:'천안지원 2023타경108875',a:'충남 천안시 서북구 김은리 126 근린시설',ap:'876,000,000',mn:'300,468,000',f:3,d:'2026.06.22'},
+    {c:'천안지원 2024타경114082',a:'충남 천안시 서북구 두정로 236 7동',ap:'66,000,000',mn:'1,865,000',f:10,d:'2026.06.23'},
+    {c:'천안지원 2024타경116293',a:'충남 천안시 서북구 두정로 236 1동',ap:'109,000,000',mn:'53,410,000',f:6,d:'2026.06.23'},
+    {c:'천안지원 2025타경423',a:'충남 천안시 서북구 쌍용동 210-21 상가·오피스텔',ap:'780,000,000',mn:'267,540,000',f:3,d:'2026.06.22'},
+    {c:'천안지원 2025타경426',a:'충남 천안시 동남구 쌍용동 237-5 7층 703호',ap:'138,000,000',mn:'16,236,000',f:6,d:'2026.06.23'},
+    {c:'천안지원 2025타경519',a:'충남 아산시 탕정면 유토리 728 유니온101 2층 232호',ap:'219,000,000',mn:'52,562,000',f:4,d:'2026.06.22'},
+    {c:'천안지원 2025타경545',a:'충남 천안시 서북구 박서성 868 엔트로빌딩2기 3동 305호',ap:'99,000,000',mn:'69,300,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경548',a:'충남 천안시 서남구 풀당동 근린상가 529.8㎡',ap:'3,960,000,000',mn:'665,557,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경633',a:'충남 천안시 동남구 봉안동 270-1 아파트',ap:'86,000,000',mn:'14,454,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경660',a:'충남 천안시 서북구 성정동 1270 상가·오피스텔',ap:'64,000,000',mn:'44,800,000',f:5,d:'2026.06.22'},
+    {c:'천안지원 2025타경10262',a:'충남 천안시 서북구 성정동 3층',ap:'110,000,000',mn:'4,439,000',f:9,d:'2026.06.23'},
+    {c:'천안지원 2025타경10842',a:'충남 천안시 서북구 봉정동 1725 3동5호 (임일빌라)',ap:'155,000,000',mn:'6,255,000',f:9,d:'2026.06.22'},
+    {c:'천안지원 2025타경11203',a:'충남 천안시 서북구 두정동 527 구글아파트 203호',ap:'162,000,000',mn:'6,537,000',f:9,d:'2026.06.23'},
+    {c:'천안지원 2025타경11344',a:'충남 천안시 서북구 쌍용동 1433 근린상가 419.5㎡',ap:'4,700,000,000',mn:'1,128,470,000',f:4,d:'2026.06.23'},
+    {c:'천안지원 2025타경11405',a:'충남 아산시 배방읍 세아리 1535 아파트 305호',ap:'227,000,000',mn:'18,694,000',f:7,d:'2026.06.22'},
+    {c:'천안지원 2025타경11465',a:'충남 천안시 서북구 두정동 525-1 가우디아파트 103동 604호',ap:'181,000,000',mn:'21,285,000',f:6,d:'2026.06.23'},
+    {c:'천안지원 2025타경11529',a:'충남 천안시 서북구 성정동 1345 상가스텔',ap:'81,000,000',mn:'6,671,000',f:7,d:'2026.06.22'},
+    {c:'천안지원 2025타경11645',a:'충남 천안시 동남구 쌍용동 1479 인사이드오피스텔 22.4㎡',ap:'135,000,000',mn:'46,305,000',f:3,d:'2026.06.23'},
+    {c:'천안지원 2025타경11650',a:'충남 천안시 서남구 선면 1788 아파트 84.9㎡',ap:'216,000,000',mn:'74,088,000',f:3,d:'2026.06.23'},
+    {c:'천안지원 2025타경11858',a:'충남 천안시 서북구 쌍용동 684 스마리라 3동 305호',ap:'568,000,000',mn:'194,824,000',f:3,d:'2026.06.22'},
+    {c:'천안지원 2025타경11893',a:'충남 천안시 서남구 청당동 308-3 연판주택 46.04㎡',ap:'114,000,000',mn:'39,102,000',f:3,d:'2026.06.23'},
+    {c:'천안지원 2025타경11901',a:'충남 천안시 서북구 성장동 1485 아르테미아아파트 12층 1236호',ap:'59,000,000',mn:'9,516,000',f:5,d:'2026.06.23'},
+    {c:'천안지원 2025타경11962',a:'충남 아산시 풍장동 193-3 복합빌딩 59.41㎡',ap:'220,000,000',mn:'36,975,000',f:5,d:'2026.06.23'},
+    {c:'천안지원 2025타경12016',a:'충남 아산시 본양리 185 아파트 6층 102호',ap:'222,000,000',mn:'26,118,000',f:6,d:'2026.06.22'},
+    {c:'천안지원 2025타경12135',a:'충남 천안시 동남구 청당동 506 9동901호',ap:'254,000,000',mn:'87,122,000',f:3,d:'2026.06.23'},
+    {c:'천안지원 2025타경12320',a:'충남 천안시 서북구 성정동 1433 트로자10아파트 1층114호',ap:'798,000,000',mn:'273,714,000',f:3,d:'2026.06.23'},
+    {c:'공주지원 2024타경22353',a:'충남 공주시 시내동 7810동 2동 202호 (빌라테스)',ap:'85,000,000',mn:'29,155,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2023타경4702',a:'충남 당진시 합덕읍 솔막규로 70 근린생활시설',ap:'969,918,500',mn:'475,260,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2023타경5187',a:'충남 서산시 성연면 성연로 45 1동102호 오피스텔',ap:'595,000,000',mn:'70,119,000',f:6,d:'2026.06.30'},
+    {c:'서산지원 2024타경3140',a:'충남 당진시 금내동 310-58 상가',ap:'4,063,509,000',mn:'975,648,000',f:4,d:'2026.06.30'},
+    {c:'서산지원 2024타경2821',a:'충남 서산시 중음동 639-2 상가·오피스텔',ap:'123,000,000',mn:'29,532,000',f:4,d:'2026.06.30'},
+    {c:'서산지원 2024타경58409',a:'충남 당진시 송악읍 한번로 10 1동 302호 (송악아파트)',ap:'196,000,000',mn:'7,909,000',f:9,d:'2026.06.30'},
+    {c:'서산지원 2024타경59990',a:'충남 당진시 솔선면 270-42 1층102호 67.0㎡',ap:'140,000,000',mn:'3,955,000',f:10,d:'2026.06.30'},
+    {c:'서산지원 2024타경60112',a:'충남 당진시 쏠선면 한번로 257-5 4층 상가',ap:'107,532,000',mn:'4,339,000',f:9,d:'2026.06.30'},
+    {c:'서산지원 2025타경668',a:'충남 당진시 합덕읍 원내밀로 114 8층 805호 (이연귀브오피스텔)',ap:'170,000,000',mn:'20,000,000',f:6,d:'2026.06.30'},
+    {c:'서산지원 2025타경50716',a:'충남 당진시 손선면 아전리 147 아파트',ap:'558,774,000',mn:'134,160,000',f:4,d:'2026.06.23'},
+    {c:'서산지원 2025타경51092',a:'충남 서산시 석찰동 아파트 102동 6층102호',ap:'257,000,000',mn:'21,164,000',f:7,d:'2026.06.23'},
+    {c:'서산지원 2025타경51124',a:'충남 서산시 사기동 133-6-1 아파트',ap:'83,000,000',mn:'4,785,000',f:8,d:'2026.06.23'},
+    {c:'서산지원 2025타경51186',a:'충남 서산시 아파트',ap:'179,000,000',mn:'30,085,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2025타경51257',a:'충남 서산시 석찰동 962 아파트 8층 704호',ap:'223,000,000',mn:'18,364,000',f:7,d:'2026.06.23'},
+    {c:'서산지원 2025타경51292',a:'충남 당진시 금내동 1486 203호 아파트 75.64㎡',ap:'231,000,000',mn:'19,023,000',f:7,d:'2026.06.23'},
+    {c:'서산지원 2025타경51295',a:'충남 당진시 합덕읍 홀미 887 유진종합아파트 101동 6층 4호',ap:'129,000,000',mn:'15,177,000',f:6,d:'2026.06.30'},
+    {c:'서산지원 2025타경51406',a:'충남 서산시 석찰동 962 아파트 1동 4층 704호',ap:'260,000,000',mn:'43,698,000',f:5,d:'2026.06.30'},
+    {c:'서산지원 2025타경51413',a:'충남 서산시 시내동 624-5 2층 아파트 69.72㎡',ap:'86,000,000',mn:'29,498,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51520',a:'충남 서산시 102-125 고오블레아에크리 13층 1316호',ap:'162,000,000',mn:'55,566,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51547',a:'충남 당진시 합내동 232-1 당진타워 1동 1층201호',ap:'514,000,000',mn:'176,302,000',f:3,d:'2026.06.23'},
+    {c:'서산지원 2025타경51573',a:'충남 서산시 서선면 1788 아파트 84.9㎡',ap:'203,000,000',mn:'69,629,000',f:3,d:'2026.06.23'},
+  ]
+};
+
+function glFailClass(n) {
+  if (n >= 7) return 'gl-fail-hi';
+  if (n >= 5) return 'gl-fail-5';
+  return 'gl-fail-3';
+}
+
+function glFormatMin(mn) {
+  const n = parseInt(mn.replace(/,/g,''));
+  if (n >= 100000000) return (n/100000000).toFixed(1).replace(/\.0$/,'') + '억';
+  if (n >= 10000) return Math.round(n/10000).toLocaleString() + '만';
+  return n.toLocaleString() + '원';
+}
+
+function glRatio(ap, mn) {
+  const a = parseInt(ap.replace(/,/g,''));
+  const m = parseInt(mn.replace(/,/g,''));
+  if (!a || !m) return '';
+  return Math.round(m/a*100) + '%';
+}
+
+function glIsSoon(d) {
+  const today = new Date();
+  const dt = new Date(d.replace(/\./g,'-'));
+  const diff = (dt - today) / 86400000;
+  return diff >= 0 && diff <= 5;
+}
+
+function glBuildCards(key) {
+  const wrap = document.getElementById('gl-cards-' + key);
+  if (!wrap || wrap.childElementCount > 0) return;
+  const items = GL_DATA[key];
+  const countEl = document.getElementById('gl-count-' + key);
+  if (countEl) countEl.textContent = items.length + '건';
+  wrap.innerHTML = items.map(function(d) {
+    var soon = glIsSoon(d.d);
+    var ratio = glRatio(d.ap, d.mn);
+    var apNum = parseInt(d.ap.replace(/,/g,''));
+    return '<div class="gl-card">' +
+      '<div class="gl-card-top">' +
+        '<span class="gl-case">' + d.c + '</span>' +
+        '<span class="gl-fail ' + glFailClass(d.f) + '">유찰 ' + d.f + '회</span>' +
+      '</div>' +
+      '<div class="gl-addr">' + d.a + '</div>' +
+      '<div class="gl-prices">' +
+        '<span class="gl-appraise">감정 ' + apNum.toLocaleString() + '원</span>' +
+        '<span class="gl-min">' + glFormatMin(d.mn) + '</span>' +
+        '<span class="gl-ratio">' + ratio + '</span>' +
+      '</div>' +
+      '<div class="gl-card-bottom">' +
+        '<span class="gl-dot ' + (soon ? 'gl-dot-soon' : 'gl-dot-normal') + '"></span>' +
+        '매각기일 ' + d.d +
+        (soon ? ' <span class="gl-soon-label">· 임박</span>' : '') +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+
+function glSwitch(key, idx) {
+  document.querySelectorAll('.gl-panel').forEach(function(p){ p.classList.remove('visible'); });
+  document.getElementById('gl-panel-' + key).classList.add('visible');
+  document.querySelectorAll('.gl-tab').forEach(function(t, i){
+    t.classList.remove('active-blue','active-gold');
+    if (i === idx) t.classList.add(idx < 2 ? 'active-blue' : 'active-gold');
+  });
+  glBuildCards(key);
+}
+
+glBuildCards('land-dj');
 </script>
+
+<script>
+const KAKAO_JS_KEY = '1881df343aff349d89e0a99987adfc34';
+const REDIRECT_URI = 'https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html';
+Kakao.init('40c094b3929dddd489f0e188fdaf11f5');
+function kakaoLogin() {
+  window.location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=1881df343aff349d89e0a99987adfc34&redirect_uri=https://kjyb0304-arch.github.io/WISDOM/kakao-callback.html&response_type=code';
+}
+function kakaoLogout() {
+  Kakao.Auth.logout(() => {
+    sessionStorage.removeItem('kakao_user');
+    document.getElementById('kakao-login-btn').style.display = 'flex';
+    document.getElementById('kakao-user-area').style.display = 'none';
+  });
+}
+window.addEventListener('load', () => {
+  const loggedIn = sessionStorage.getItem('kakao_logged_in');
+  const nickname = sessionStorage.getItem('kakao_nickname') || '회원';
+  if (loggedIn) {
+    document.getElementById('kakao-login-btn').style.display = 'none';
+    document.getElementById('kakao-user-area').style.display = 'flex';
+    document.getElementById('kakao-user-name').textContent = nickname + '님';
+  }
+});
+</script>
+
 <button class="phone-float" onclick="showPhone()" title="전화상담">📞</button>
 </body>
 </html>
