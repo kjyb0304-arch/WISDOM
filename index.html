@@ -523,11 +523,14 @@ function glBuildCards(key) {
   }
   var countEl = document.getElementById('gl-count-' + key);
   if (countEl) countEl.textContent = items.length + '건';
+  
   wrap.innerHTML = items.map(function(d) {
     var soon = glIsSoon(d.d);
     var ratio = glRatio(d.ap, d.mn);
     
-    // 💡 클릭 이벤트(onclick)와 마우스 포인터(cursor)를 직관적으로 추가했습니다.
+    // 💡 [핵심 추가] 파이썬이 찾아낸 용도지역(zone) 데이터가 있으면 태그를 만들고, 없으면 빈칸 처리
+    var zoneTag = d.zone ? '<span class="gl-zone" style="display:inline-block;">📍 ' + d.zone + '</span>' : '';
+
     return '<div class="gl-card" style="cursor: pointer;" onclick="window.openAuction(\'' + d.c + '\')">' +
       '<div class="gl-card-top">' +
         '<span class="gl-case">' + d.c + '</span>' +
@@ -539,7 +542,7 @@ function glBuildCards(key) {
         '<span class="gl-min">' + glFormatMin(d.mn) + '</span>' +
         '<span class="gl-ratio">' + ratio + '</span>' +
       '</div>' +
-      '<span class="gl-zone"></span>' +
+      zoneTag + /* 👈 여기에 용도지역 태그가 들어갑니다! */
       '<div class="gl-card-bottom">' +
         '<span class="gl-dot ' + (soon ? 'gl-dot-soon' : 'gl-dot-normal') + '"></span>' +
         '매각기일 ' + d.d +
@@ -548,7 +551,6 @@ function glBuildCards(key) {
     '</div>';
   }).join('');
 }
-
 function glSwitch(key, idx) {
   GL_ACTIVE_KEY = key;
   document.querySelectorAll('.gl-panel').forEach(function(p){ p.classList.remove('visible'); });
