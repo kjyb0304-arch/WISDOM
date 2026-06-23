@@ -514,24 +514,43 @@ const VWORLD_KEY = '3B7F4456-8F7E-3BC5-8F92-DF630DDD0DE5';
 async function fetchZoneInfo(address, cardEl) {
   try {
     const encAddr = encodeURIComponent(address);
-    const coordUrl = `https://api.vworld.kr/req/address?service=address&request=getcoord&version=2.0&crs=epsg:4326&address=${encAddr}&refine=true&simple=false&format=json&type=parcel&key=${VWORLD_KEY}`;
-    const coordRes = await fetch(coordUrl);
-    const coordData = await coordRes.json();
-    let x, y;
-    if (coordData.response?.status === 'OK') {
-      x = coordData.response.result.point.x;
-      y = coordData.response.result.point.y;
-    } else {
-      const coordUrl2 = coordUrl.replace('type=parcel', 'type=road');
-      const coordRes2 = await fetch(coordUrl2);
-      const coordData2 = await coordRes2.json();
-      if (coordData2.response?.status !== 'OK') return;
-      x = coordData2.response.result.point.x;
-      y = coordData2.response.result.point.y;
-    }
-    const zoneUrl = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UD801&geometry=true&attribute=true&page=1&size=10&crs=EPSG:4326&geomFilter=POINT(${x} ${y})&format=json&key=${VWORLD_KEY}`;
-    const zoneRes = await fetch(zoneUrl);
-    const zoneData = await zoneRes.json();
+    const callbackName = 'cb_' + Math.random().toString(36).slice(2);
+    
+    // JSONP 방식으로 주소→좌표 호출
+    const coordData = await new Promise((resolve, reject) => {
+      window[callbackName] = (data) => {
+        delete window[callbackName];
+        document.getElementById(callbackName + '_s')?.remove();
+        resolve(data);
+      };
+      const s = document.createElement('script');
+      s.id = callbackName + '_s';
+      s.src = `https://api.vworld.kr/req/address?service=address&request=getcoord&version=2.0&crs=epsg:4326&address=${encAddr}&refine=true&simple=false&format=json&type=parcel&key=${VWORLD_KEY}&callback=${callbackName}`;
+      s.onerror = () => reject(new Error('script error'));
+      document.head.appendChild(s);
+      setTimeout(() => reject(new Error('timeout')), 5000);
+    });
+
+    if (coordData.response?.status !== 'OK') return;
+    const x = coordData.response.result.point.x;
+    const y = coordData.response.result.point.y;
+
+    // JSONP 방식으로 좌표→용도지역 호출
+    const cb2 = 'cb_' + Math.random().toString(36).slice(2);
+    const zoneData = await new Promise((resolve, reject) => {
+      window[cb2] = (data) => {
+        delete window[cb2];
+        document.getElementById(cb2 + '_s')?.remove();
+        resolve(data);
+      };
+      const s2 = document.createElement('script');
+      s2.id = cb2 + '_s';
+      s2.src = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UD801&geometry=true&attribute=true&page=1&size=10&crs=EPSG:4326&geomFilter=POINT(${x} ${y})&format=json&key=${VWORLD_KEY}&callback=${cb2}`;
+      s2.onerror = () => reject(new Error('script error'));
+      document.head.appendChild(s2);
+      setTimeout(() => reject(new Error('timeout')), 5000);
+    });
+
     if (zoneData.response?.status !== 'OK') return;
     const features = zoneData.response.result?.featureCollection?.features;
     if (!features || features.length === 0) return;
