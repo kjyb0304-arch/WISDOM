@@ -273,8 +273,10 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
     <div class="goldlist-tabs">
       <button class="gl-tab active-blue" onclick="glSwitch('land-dj',0)">🌾 토지 (대전·세종)</button>
       <button class="gl-tab" onclick="glSwitch('bld-dj',1)">🏢 건물 (대전·세종)</button>
-      <button class="gl-tab is-gold" onclick="glSwitch('land-cn',2)">🌾 토지 (충남)</button>
-      <button class="gl-tab is-gold" onclick="glSwitch('bld-cn',3)">🏢 건물 (충남)</button>
+      <button class="gl-tab is-gold" onclick="glSwitch('land-cn',2)">🏆 토지 (충남)</button>
+<button class="gl-tab" onclick="glSwitch('bld-cn',3)">건물 (충남)</button>
+<button class="gl-tab is-gold" onclick="glSwitch('land-cb',4)">🏆 토지 (충북)</button>
+<button class="gl-tab" onclick="glSwitch('bld-cb',5)">건물 (충북)</button>
     </div>
 
     <div id="gl-panel-land-dj" class="gl-panel visible">
@@ -294,6 +296,14 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
       <div class="gl-cards" id="gl-cards-bld-cn"></div>
     </div>
 
+    <div id="gl-panel-land-cb" class="gl-panel">
+  <p class="gl-count" id="gl-count-land-cb"></p>
+  <div class="gl-cards" id="gl-cards-land-cb"></div>
+</div>
+<div id="gl-panel-bld-cb" class="gl-panel">
+  <p class="gl-count" id="gl-count-bld-cb"></p>
+  <div class="gl-cards" id="gl-cards-bld-cb"></div>
+</div>
     <div class="goldlist-cta">
       <a href="#subscribe" class="btn-primary">매주 무료로 받아보기 →</a>
     </div>
