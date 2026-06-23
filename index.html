@@ -148,6 +148,16 @@ footer .footer-links a:hover { color: #85B7EB; }
   .nav-menu { display: none; }
   .gl-cards { grid-template-columns: 1fr; }
 }
+.gl-zone {
+  display: none;
+  font-size: 11px;
+  color: #185FA5;
+  background: #E6F1FB;
+  border-radius: 4px;
+  padding: 2px 8px;
+  margin-top: 4px;
+  font-weight: 500;
+}
 </style>
 </head>
 <body>
@@ -462,6 +472,7 @@ function glBuildCards(key) {
         '<span class="gl-min">' + glFormatMin(d.mn) + '</span>' +
         '<span class="gl-ratio">' + ratio + '</span>' +
       '</div>' +
+      '<span class="gl-zone"></span>' +
       '<div class="gl-card-bottom">' +
         '<span class="gl-dot ' + (soon ? 'gl-dot-soon' : 'gl-dot-normal') + '"></span>' +
         '매각기일 ' + d.d +
@@ -480,6 +491,7 @@ function glSwitch(key, idx) {
     if (i === idx) t.classList.add(idx < 2 ? 'active-blue' : 'active-gold');
   });
   glBuildCards(key);
+  glLoadZones(key);
 }
 
 fetch('goldlist_data.json?v=' + Date.now())
@@ -495,6 +507,55 @@ fetch('goldlist_data.json?v=' + Date.now())
     var el = document.getElementById('gl-cards-land-dj');
     if (el) el.innerHTML = '<p style="color:rgba(255,255,255,0.35);padding:1rem;font-size:13px;">데이터를 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';
   });
+  const VWORLD_KEY = '3B7F4456-8F7E-3BC5-8F92-DF630DDD0DE5';
+
+async function fetchZoneInfo(address, cardEl) {
+  try {
+    const encAddr = encodeURIComponent(address);
+    const coordUrl = `https://api.vworld.kr/req/address?service=address&request=getcoord&version=2.0&crs=epsg:4326&address=${encAddr}&refine=true&simple=false&format=json&type=parcel&key=${VWORLD_KEY}`;
+    const coordRes = await fetch(coordUrl);
+    const coordData = await coordRes.json();
+    let x, y;
+    if (coordData.response?.status === 'OK') {
+      x = coordData.response.result.point.x;
+      y = coordData.response.result.point.y;
+    } else {
+      const coordUrl2 = coordUrl.replace('type=parcel', 'type=road');
+      const coordRes2 = await fetch(coordUrl2);
+      const coordData2 = await coordRes2.json();
+      if (coordData2.response?.status !== 'OK') return;
+      x = coordData2.response.result.point.x;
+      y = coordData2.response.result.point.y;
+    }
+    const zoneUrl = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UD801&geometry=true&attribute=true&page=1&size=10&crs=EPSG:4326&geomFilter=POINT(${x} ${y})&format=json&key=${VWORLD_KEY}`;
+    const zoneRes = await fetch(zoneUrl);
+    const zoneData = await zoneRes.json();
+    if (zoneData.response?.status !== 'OK') return;
+    const features = zoneData.response.result?.featureCollection?.features;
+    if (!features || features.length === 0) return;
+    const props = features[0].properties;
+    const zoneName = props.uname || props.urban_name || '';
+    if (!zoneName) return;
+    const zoneEl = cardEl.querySelector('.gl-zone');
+    if (zoneEl) {
+      zoneEl.textContent = '📍 ' + zoneName;
+      zoneEl.style.display = 'inline-block';
+    }
+  } catch(e) {
+    console.log('용도지역 조회 실패:', e.message);
+  }
+}
+
+function glLoadZones(key) {
+  const cards = document.querySelectorAll('#gl-cards-' + key + ' .gl-card');
+  cards.forEach((card, idx) => {
+    const addrEl = card.querySelector('.gl-addr');
+    if (!addrEl) return;
+    const address = addrEl.textContent.trim();
+    if (!address) return;
+    setTimeout(() => fetchZoneInfo(address, card), idx * 300);
+  });
+}
 </script>
 
 <script>
