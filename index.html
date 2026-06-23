@@ -508,7 +508,6 @@ fetch('goldlist_data.json?v=' + Date.now())
     var el = document.getElementById('gl-cards-land-dj');
     if (el) el.innerHTML = '<p style="color:rgba(255,255,255,0.35);padding:1rem;font-size:13px;">데이터를 불러오지 못했습니다. 잠시 후 새로고침해주세요.</p>';
   });
-  const VWORLD_KEY = '3B7F4456-8F7E-3BC5-8F92-DF630DDD0DE5';
 
 async function fetchZoneInfo(address, cardEl) {
   try {
