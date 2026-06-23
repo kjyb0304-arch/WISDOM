@@ -480,7 +480,7 @@ document.getElementById('phoneModal').addEventListener('click', function(e) {
 var GL_DATA = {};
 var GL_ACTIVE_KEY = 'land-dj';
 
-// 💡 전역(window) 함수로 선언하여 무조건 실행되도록 보장합니다.
+// 💡 전역 함수 선언 (클릭 시 네이버 검색 연결)
 window.openAuction = function(caseNumber) {
   if (!caseNumber) return;
   var searchUrl = "https://search.naver.com/search.naver?query=" + encodeURIComponent(caseNumber);
@@ -523,12 +523,11 @@ function glBuildCards(key) {
   }
   var countEl = document.getElementById('gl-count-' + key);
   if (countEl) countEl.textContent = items.length + '건';
-  
   wrap.innerHTML = items.map(function(d) {
     var soon = glIsSoon(d.d);
     var ratio = glRatio(d.ap, d.mn);
     
-    // 💡 [핵심 추가] 파이썬이 찾아낸 용도지역(zone) 데이터가 있으면 태그를 만들고, 없으면 빈칸 처리
+    // 💡 파이썬이 찾아낸 용도지역(zone) 데이터를 화면에 뿌려주는 태그 생성
     var zoneTag = d.zone ? '<span class="gl-zone" style="display:inline-block;">📍 ' + d.zone + '</span>' : '';
 
     return '<div class="gl-card" style="cursor: pointer;" onclick="window.openAuction(\'' + d.c + '\')">' +
@@ -542,7 +541,7 @@ function glBuildCards(key) {
         '<span class="gl-min">' + glFormatMin(d.mn) + '</span>' +
         '<span class="gl-ratio">' + ratio + '</span>' +
       '</div>' +
-      zoneTag + /* 👈 여기에 용도지역 태그가 들어갑니다! */
+      zoneTag + /* 👈 용도지역 위치 */
       '<div class="gl-card-bottom">' +
         '<span class="gl-dot ' + (soon ? 'gl-dot-soon' : 'gl-dot-normal') + '"></span>' +
         '매각기일 ' + d.d +
