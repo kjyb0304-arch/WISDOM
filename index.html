@@ -448,6 +448,13 @@ function glIsSoon(d) {
   return diff >= 0 && diff <= 5;
 }
 
+// 카드를 클릭했을 때 실행되는 경매 물건 연결 함수
+function openAuction(caseNumber) {
+  if (!caseNumber) return;
+  const searchUrl = "https://search.naver.com/search.naver?query=" + encodeURIComponent(caseNumber);
+  window.open(searchUrl, '_blank');
+}
+
 function glBuildCards(key) {
   var wrap = document.getElementById('gl-cards-' + key);
   if (!wrap) return;
@@ -461,7 +468,9 @@ function glBuildCards(key) {
   wrap.innerHTML = items.map(function(d) {
     var soon = glIsSoon(d.d);
     var ratio = glRatio(d.ap, d.mn);
-    return '<div class="gl-card">' +
+    
+    // 카드 클릭 이벤트 추가됨
+    return '<div class="gl-card" style="cursor: pointer;" onclick="openAuction(\'' + d.c + '\')">' +
       '<div class="gl-card-top">' +
         '<span class="gl-case">' + d.c + '</span>' +
         '<span class="gl-fail ' + glFailClass(d.f) + '">유찰 ' + d.f + '회</span>' +
