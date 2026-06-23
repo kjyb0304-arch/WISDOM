@@ -47,56 +47,116 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
 .service-tag { display: inline-block; background: #E6F1FB; color: #185FA5; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-top: 12px; margin-right: 4px; }
 
 /* =============================================
-   골드리스트 섹션 - 카드형 개편
+   골드리스트 섹션 - 화사한 갤러리 디자인 (Bright & Ivory)
    ============================================= */
-.goldlist-section { background: #0a1628; padding: 4rem 2rem; }
-.goldlist-inner { max-width: 1100px; margin: 0 auto; }
-.goldlist-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 10px; }
-.goldlist-title { font-size: 1.5rem; font-weight: 700; color: #fff; }
-.badge-gold { background: rgba(250,199,117,0.2); color: #FAC775; font-size: 12px; padding: 4px 14px; border-radius: 20px; border: 1px solid rgba(250,199,117,0.4); }
+.goldlist-section { 
+    background: linear-gradient(135deg, #fdfbf7 0%, #f1f5f9 100%); /* 따뜻한 아이보리와 은은한 쿨톤의 조화 */
+    padding: 5rem 2rem; 
+}
+.goldlist-inner { 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
+.goldlist-header { 
+    display: flex; justify-content: space-between; align-items: center; 
+    margin-bottom: 2rem; flex-wrap: wrap; gap: 10px; 
+}
+.goldlist-title { 
+    font-size: 1.8rem; font-weight: 700; color: #0f172a; /* 선명하고 고급스러운 다크 네이비/블랙 */
+}
+.badge-gold { 
+    background: #fffbeb; 
+    color: #d97706; font-size: 13px; font-weight: 600; 
+    padding: 6px 16px; border-radius: 30px; 
+    border: 1px solid #fde68a; 
+    box-shadow: 0 2px 8px rgba(217,119,6,0.08);
+}
 
-/* 탭 */
-.goldlist-tabs { display: flex; gap: 8px; margin-bottom: 1rem; flex-wrap: wrap; }
-.gl-tab { padding: 8px 18px; border-radius: 6px; font-size: 13px; font-family: 'Noto Sans KR', sans-serif; border: 1px solid rgba(255,255,255,0.18); color: rgba(255,255,255,0.6); cursor: pointer; background: transparent; transition: all 0.15s; }
-.gl-tab:hover { border-color: #85B7EB; color: #85B7EB; }
-.gl-tab.active-blue { background: #185FA5; color: #fff; border-color: #185FA5; }
-.gl-tab.is-gold { color: #FAC775; border-color: rgba(250,199,117,0.35); background: rgba(250,199,117,0.07); }
-.gl-tab.active-gold { background: rgba(250,199,117,0.25); color: #FAC775; border-color: rgba(250,199,117,0.6); }
+/* 탭 디자인 (밝은 배경에 맞춘 깔끔한 스타일) */
+.goldlist-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.gl-tab { 
+    padding: 10px 22px; border-radius: 30px; font-size: 14px; font-weight: 500;
+    font-family: 'Noto Sans KR', sans-serif; 
+    border: 1px solid #e2e8f0; 
+    color: #64748b; cursor: pointer; 
+    background: #ffffff; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+.gl-tab:hover { 
+    border-color: #cbd5e1; color: #0f172a; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.gl-tab.active-blue { 
+    background: linear-gradient(135deg, #185FA5, #2B6CB0); color: #fff; border-color: transparent; 
+    box-shadow: 0 4px 12px rgba(24,95,165,0.25);
+}
+.gl-tab.is-gold { color: #d97706; border-color: #fde68a; background: #fffbeb;}
+.gl-tab.active-gold { 
+    background: linear-gradient(135deg, #f59e0b, #d97706); 
+    color: #ffffff; border-color: transparent; 
+    box-shadow: 0 4px 12px rgba(217,119,6,0.25);
+}
 
-/* 패널 */
-.gl-panel { display: none; }
+/* 패널 & 그리드 */
+.gl-panel { display: none; animation: fadeIn 0.5s ease-out; }
 .gl-panel.visible { display: block; }
-.gl-count { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 1rem; }
+.gl-count { font-size: 13px; color: #64748b; margin-bottom: 1.2rem; margin-left: 5px; font-weight: 500; }
+.gl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
-/* 카드 그리드 */
-.gl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
-/* 개별 카드 */
-.gl-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 14px 16px; transition: border-color 0.15s, background 0.15s; }
-.gl-card:hover { border-color: rgba(133,183,235,0.45); background: rgba(255,255,255,0.08); }
+/* 밝은 톤의 입체적인 카드 디자인 */
+.gl-card { 
+    background: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 16px; padding: 22px; 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+/* 카드 호버(마우스 오버) 시 시선 집중 액션 */
+.gl-card:hover { 
+    border-color: #185FA5; 
+    transform: translateY(-8px); 
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px #185FA5; /* 호버 시 우아하게 떠오르며 파란색 테두리 강조 */
+}
 
-.gl-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
-.gl-case { font-size: 11px; color: rgba(255,255,255,0.4); font-family: monospace; line-height: 1.4; }
-.gl-fail { font-size: 11px; padding: 3px 9px; border-radius: 20px; white-space: nowrap; flex-shrink: 0; }
-.gl-fail-3 { background: rgba(24,95,165,0.3); color: #85B7EB; }
-.gl-fail-5 { background: rgba(226,75,74,0.2); color: #F09595; }
-.gl-fail-hi { background: rgba(250,199,117,0.2); color: #FAC775; border: 1px solid rgba(250,199,117,0.4); }
+.gl-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.gl-case { font-size: 12px; color: #64748b; letter-spacing: 0.5px; }
+.gl-fail { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
+.gl-fail-3 { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
+.gl-fail-5 { background: #fee2e2; color: #be123c; border: 1px solid #fecaca; }
+.gl-fail-hi { background: #fef3c7; color: #a16207; border: 1px solid #fde047; }
 
-.gl-addr { font-size: 13px; color: rgba(255,255,255,0.9); line-height: 1.5; margin-bottom: 10px; font-weight: 500; }
+.gl-addr { font-size: 16px; color: #0f172a; line-height: 1.4; margin-bottom: 16px; font-weight: 600; word-break: keep-all; }
 
-.gl-prices { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.gl-appraise { font-size: 11px; color: rgba(255,255,255,0.4); }
-.gl-min { font-size: 16px; color: #85B7EB; font-weight: 700; }
-.gl-ratio { font-size: 11px; color: #9FE1CB; margin-left: auto; }
+.gl-prices { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; background: #f8fafc; padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #f1f5f9; }
+.gl-appraise { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
+.gl-min { font-size: 1.25rem; color: #185FA5; font-weight: 800; }
+.gl-ratio { font-size: 12px; color: #059669; margin-left: auto; font-weight: 700; background: #d1fae5; padding: 2px 8px; border-radius: 12px; }
 
-.gl-card-bottom { margin-top: 9px; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 8px; display: flex; align-items: center; gap: 6px; font-size: 11px; color: rgba(255,255,255,0.45); }
+.gl-zone { display: inline-block; font-size: 11px; color: #475569; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px 10px; margin-bottom: 14px; font-weight: 600; }
+
+.gl-card-bottom { border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748b; }
 .gl-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-.gl-dot-soon { background: #FAC775; }
-.gl-dot-normal { background: rgba(255,255,255,0.2); }
-.gl-soon-label { color: #FAC775; font-weight: 500; }
 
-.goldlist-cta { text-align: center; margin-top: 2rem; }
+/* 밝은 배경에서는 노란색보다 붉은 코랄빛이 눈에 훨씬 잘 띕니다 */
+.gl-dot-soon { background: #f43f5e; box-shadow: 0 0 8px #f43f5e; animation: pulse 2s infinite; }
+.gl-dot-normal { background: #cbd5e1; }
+.gl-soon-label { color: #f43f5e; font-weight: 600; }
 
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+}
+
+.goldlist-cta { text-align: center; margin-top: 3rem; }
 /* ============================================= */
 
 .subscribe-section { background: #E6F1FB; padding: 4rem 2rem; }
