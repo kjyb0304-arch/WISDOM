@@ -501,6 +501,7 @@ fetch('goldlist_data.json?v=' + Date.now())
     var weekEl = document.getElementById('gl-week');
     if (weekEl && json.week) weekEl.textContent = json.week;
     glBuildCards(GL_ACTIVE_KEY);
+    glLoadZones(GL_ACTIVE_KEY);
   })
   .catch(function(e){
     console.warn('goldlist_data.json 로드 실패:', e);
