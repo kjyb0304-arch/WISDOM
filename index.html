@@ -47,10 +47,10 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
 .service-tag { display: inline-block; background: #E6F1FB; color: #185FA5; font-size: 11px; padding: 3px 10px; border-radius: 20px; margin-top: 12px; margin-right: 4px; }
 
 /* =============================================
-   골드리스트 섹션 - 화사한 갤러리 디자인 (Bright & Ivory)
+   골드리스트 섹션 - 프리미엄 감성 디자인 (Premium & Emotional)
    ============================================= */
 .goldlist-section { 
-    background: linear-gradient(135deg, #fdfbf7 0%, #f1f5f9 100%); /* 따뜻한 아이보리와 은은한 쿨톤의 조화 */
+    background: linear-gradient(135deg, #0f172a 0%, #1a202c 100%); /* 깊고 고급스러운 밤하늘 색상 */
     padding: 5rem 2rem; 
 }
 .goldlist-inner { 
@@ -62,47 +62,46 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
     margin-bottom: 2rem; flex-wrap: wrap; gap: 10px; 
 }
 .goldlist-title { 
-    font-size: 1.8rem; font-weight: 700; color: #0f172a; /* 선명하고 고급스러운 다크 네이비/블랙 */
+    font-size: 1.8rem; font-weight: 700; color: #ffffff; 
+    text-shadow: 0 2px 10px rgba(255,255,255,0.1);
 }
 .badge-gold { 
-    background: #fffbeb; 
-    color: #d97706; font-size: 13px; font-weight: 600; 
+    background: linear-gradient(135deg, rgba(250,199,117,0.2), rgba(212,175,55,0.1)); 
+    color: #FAC775; font-size: 13px; font-weight: 500; 
     padding: 6px 16px; border-radius: 30px; 
-    border: 1px solid #fde68a; 
-    box-shadow: 0 2px 8px rgba(217,119,6,0.08);
+    border: 1px solid rgba(250,199,117,0.3); 
+    box-shadow: 0 4px 15px rgba(250,199,117,0.05);
 }
 
-/* 탭 디자인 (밝은 배경에 맞춘 깔끔한 스타일) */
+/* 감성적인 탭 디자인 */
 .goldlist-tabs { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
 .gl-tab { 
     padding: 10px 22px; border-radius: 30px; font-size: 14px; font-weight: 500;
     font-family: 'Noto Sans KR', sans-serif; 
-    border: 1px solid #e2e8f0; 
-    color: #64748b; cursor: pointer; 
-    background: #ffffff; 
+    border: 1px solid rgba(255,255,255,0.1); 
+    color: rgba(255,255,255,0.7); cursor: pointer; 
+    background: rgba(255,255,255,0.03); 
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 .gl-tab:hover { 
-    border-color: #cbd5e1; color: #0f172a; 
+    border-color: rgba(255,255,255,0.3); color: #fff; background: rgba(255,255,255,0.08); 
     transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 .gl-tab.active-blue { 
     background: linear-gradient(135deg, #185FA5, #2B6CB0); color: #fff; border-color: transparent; 
-    box-shadow: 0 4px 12px rgba(24,95,165,0.25);
+    box-shadow: 0 4px 15px rgba(24,95,165,0.4);
 }
-.gl-tab.is-gold { color: #d97706; border-color: #fde68a; background: #fffbeb;}
+.gl-tab.is-gold { color: #FAC775; }
 .gl-tab.active-gold { 
-    background: linear-gradient(135deg, #f59e0b, #d97706); 
-    color: #ffffff; border-color: transparent; 
-    box-shadow: 0 4px 12px rgba(217,119,6,0.25);
+    background: linear-gradient(135deg, rgba(212,175,55,0.2), rgba(250,199,117,0.1)); 
+    color: #FAC775; border-color: rgba(250,199,117,0.5); 
+    box-shadow: 0 4px 15px rgba(250,199,117,0.15);
 }
 
 /* 패널 & 그리드 */
 .gl-panel { display: none; animation: fadeIn 0.5s ease-out; }
 .gl-panel.visible { display: block; }
-.gl-count { font-size: 13px; color: #64748b; margin-bottom: 1.2rem; margin-left: 5px; font-weight: 500; }
+.gl-count { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 1.2rem; margin-left: 5px; }
 .gl-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
 
 @keyframes fadeIn {
@@ -110,50 +109,49 @@ nav { background: #0a1628; padding: 0 2rem; position: sticky; top: 0; z-index: 1
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* 밝은 톤의 입체적인 카드 디자인 */
+/* 프리미엄 카드 디자인 (글래스모피즘 & 소프트 섀도우) */
 .gl-card { 
-    background: #ffffff; 
-    border: 1px solid #e2e8f0; 
+    background: rgba(255, 255, 255, 0.03); 
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08); 
     border-radius: 16px; padding: 22px; 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
     position: relative; overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
 }
 /* 카드 호버(마우스 오버) 시 시선 집중 액션 */
 .gl-card:hover { 
-    border-color: #185FA5; 
+    border-color: rgba(133,183,235,0.6); 
+    background: rgba(255, 255, 255, 0.06); 
     transform: translateY(-8px); 
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08), 0 0 0 1px #185FA5; /* 호버 시 우아하게 떠오르며 파란색 테두리 강조 */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 20px rgba(133,183,235,0.15);
 }
 
 .gl-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.gl-case { font-size: 12px; color: #64748b; letter-spacing: 0.5px; }
+.gl-case { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 0.5px; }
 .gl-fail { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; flex-shrink: 0; }
-.gl-fail-3 { background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; }
-.gl-fail-5 { background: #fee2e2; color: #be123c; border: 1px solid #fecaca; }
-.gl-fail-hi { background: #fef3c7; color: #a16207; border: 1px solid #fde047; }
+.gl-fail-3 { background: rgba(24,95,165,0.2); color: #90cdf4; border: 1px solid rgba(144,205,244,0.3); }
+.gl-fail-5 { background: rgba(226,75,74,0.15); color: #feb2b2; border: 1px solid rgba(254,178,178,0.3); }
+.gl-fail-hi { background: rgba(250,199,117,0.15); color: #fbd38d; border: 1px solid rgba(251,211,141,0.4); box-shadow: 0 0 10px rgba(251,211,141,0.2); }
 
-.gl-addr { font-size: 16px; color: #0f172a; line-height: 1.4; margin-bottom: 16px; font-weight: 600; word-break: keep-all; }
+.gl-addr { font-size: 16px; color: #ffffff; line-height: 1.4; margin-bottom: 16px; font-weight: 500; word-break: keep-all; }
 
-.gl-prices { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; background: #f8fafc; padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; border: 1px solid #f1f5f9; }
-.gl-appraise { font-size: 12px; color: #94a3b8; text-decoration: line-through; }
-.gl-min { font-size: 1.25rem; color: #185FA5; font-weight: 800; }
-.gl-ratio { font-size: 12px; color: #059669; margin-left: auto; font-weight: 700; background: #d1fae5; padding: 2px 8px; border-radius: 12px; }
+.gl-prices { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; background: rgba(0,0,0,0.2); padding: 12px 14px; border-radius: 10px; margin-bottom: 14px; }
+.gl-appraise { font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: line-through; }
+.gl-min { font-size: 1.25rem; color: #90cdf4; font-weight: 700; }
+.gl-ratio { font-size: 12px; color: #68d391; margin-left: auto; font-weight: 700; background: rgba(104,211,145,0.15); padding: 2px 8px; border-radius: 12px; }
 
-.gl-zone { display: inline-block; font-size: 11px; color: #475569; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 6px; padding: 4px 10px; margin-bottom: 14px; font-weight: 600; }
+.gl-zone { display: inline-block; font-size: 11px; color: #e2e8f0; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 4px 10px; margin-bottom: 14px; font-weight: 500; }
 
-.gl-card-bottom { border-top: 1px solid #f1f5f9; padding-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748b; }
+.gl-card-bottom { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.5); }
 .gl-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-
-/* 밝은 배경에서는 노란색보다 붉은 코랄빛이 눈에 훨씬 잘 띕니다 */
-.gl-dot-soon { background: #f43f5e; box-shadow: 0 0 8px #f43f5e; animation: pulse 2s infinite; }
-.gl-dot-normal { background: #cbd5e1; }
-.gl-soon-label { color: #f43f5e; font-weight: 600; }
+.gl-dot-soon { background: #f6e05e; box-shadow: 0 0 8px #f6e05e; animation: pulse 2s infinite; }
+.gl-dot-normal { background: rgba(255,255,255,0.3); }
+.gl-soon-label { color: #f6e05e; font-weight: 500; }
 
 @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.5); }
-    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(244, 63, 94, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 63, 94, 0); }
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(246, 224, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(246, 224, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(246, 224, 94, 0); }
 }
 
 .goldlist-cta { text-align: center; margin-top: 3rem; }
