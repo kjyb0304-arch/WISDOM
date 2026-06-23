@@ -515,8 +515,8 @@ async function fetchZoneInfo(address, cardEl) {
   try {
     const encAddr = encodeURIComponent(address);
     const callbackName = 'cb_' + Math.random().toString(36).slice(2);
-    
-    // JSONP 방식으로 주소→좌표 호출
+
+    // 1단계: vworld 주소 → 좌표 + PNU
     const coordData = await new Promise((resolve, reject) => {
       window[callbackName] = (data) => {
         delete window[callbackName];
@@ -532,30 +532,64 @@ async function fetchZoneInfo(address, cardEl) {
     });
 
     if (coordData.response?.status !== 'OK') return;
-    const x = coordData.response.result.point.x;
-    const y = coordData.response.result.point.y;
+    
+    // PNU 코드 추출
+    const result = coordData.response.result;
+    const pnu = result?.zipcode || result?.structure?.level4L || '';
+    
+    // PNU가 없으면 좌표로 용도지역 조회 (기존 방식)
+    if (!pnu) {
+      const x = result.point.x;
+      const y = result.point.y;
+      const cb2 = 'cb_' + Math.random().toString(36).slice(2);
+      const zoneData = await new Promise((resolve, reject) => {
+        window[cb2] = (data) => {
+          delete window[cb2];
+          document.getElementById(cb2 + '_s')?.remove();
+          resolve(data);
+        };
+        const s2 = document.createElement('script');
+        s2.id = cb2 + '_s';
+        s2.src = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UD801&geometry=true&attribute=true&page=1&size=10&crs=EPSG:4326&geomFilter=POINT(${x} ${y})&format=json&key=${VWORLD_KEY}&callback=${cb2}`;
+        s2.onerror = () => reject(new Error('script error'));
+        document.head.appendChild(s2);
+        setTimeout(() => reject(new Error('timeout')), 5000);
+      });
+      if (zoneData.response?.status !== 'OK') return;
+      const features = zoneData.response.result?.featureCollection?.features;
+      if (!features || features.length === 0) return;
+      const props = features[0].properties;
+      const zoneName = props.uname || props.urban_name || '';
+      if (!zoneName) return;
+      const zoneEl = cardEl.querySelector('.gl-zone');
+      if (zoneEl) {
+        zoneEl.textContent = '📍 ' + zoneName;
+        zoneEl.style.display = 'inline-block';
+      }
+      return;
+    }
 
-    // JSONP 방식으로 좌표→용도지역 호출
-    const cb2 = 'cb_' + Math.random().toString(36).slice(2);
-    const zoneData = await new Promise((resolve, reject) => {
-      window[cb2] = (data) => {
-        delete window[cb2];
-        document.getElementById(cb2 + '_s')?.remove();
+    // 2단계: 토지이음 API → 용도지역
+    const ELAND_KEY = 'a48366cfb99492af1b430e91fb8a1a49a8328f41df1ee957b33d7136bde5d687';
+    const cb3 = 'cb_' + Math.random().toString(36).slice(2);
+    const landData = await new Promise((resolve, reject) => {
+      window[cb3] = (data) => {
+        delete window[cb3];
+        document.getElementById(cb3 + '_s')?.remove();
         resolve(data);
       };
-      const s2 = document.createElement('script');
-      s2.id = cb2 + '_s';
-      s2.src = `https://api.vworld.kr/req/data?service=data&request=GetFeature&data=LT_C_UD801&geometry=true&attribute=true&page=1&size=10&crs=EPSG:4326&geomFilter=POINT(${x} ${y})&format=json&key=${VWORLD_KEY}&callback=${cb2}`;
-      s2.onerror = () => reject(new Error('script error'));
-      document.head.appendChild(s2);
+      const s3 = document.createElement('script');
+      s3.id = cb3 + '_s';
+      s3.src = `https://apis.data.go.kr/1613000/arLandUseInfoService/getLandUseAttrList?serviceKey=${ELAND_KEY}&pnu=${pnu}&numOfRows=5&pageNo=1&_type=json&callback=${cb3}`;
+      s3.onerror = () => reject(new Error('script error'));
+      document.head.appendChild(s3);
       setTimeout(() => reject(new Error('timeout')), 5000);
     });
 
-    if (zoneData.response?.status !== 'OK') return;
-    const features = zoneData.response.result?.featureCollection?.features;
-    if (!features || features.length === 0) return;
-    const props = features[0].properties;
-    const zoneName = props.uname || props.urban_name || '';
+    const items = landData?.response?.body?.items?.item;
+    if (!items) return;
+    const arr = Array.isArray(items) ? items : [items];
+    const zoneName = arr[0]?.prposAreaDstrcNm || arr[0]?.uname || '';
     if (!zoneName) return;
     const zoneEl = cardEl.querySelector('.gl-zone');
     if (zoneEl) {
