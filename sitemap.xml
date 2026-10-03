@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.wisdom-dj.co.kr/</loc>
-  </url>
-  <url>
     <loc>https://www.wisdom-dj.co.kr/about/</loc>
   </url>
   <url>
@@ -22,7 +19,7 @@
     <loc>https://www.wisdom-dj.co.kr/guide/</loc>
   </url>
   <url>
-    <loc>https://www.wisdom-dj.co.kr/insights/</loc>
+    <loc>https://www.wisdom-dj.co.kr/</loc>
   </url>
   <url>
     <loc>https://www.wisdom-dj.co.kr/insights/administration-preparation/</loc>
@@ -34,16 +31,40 @@
     <loc>https://www.wisdom-dj.co.kr/insights/general-preparation/</loc>
   </url>
   <url>
+    <loc>https://www.wisdom-dj.co.kr/insights/</loc>
+  </url>
+  <url>
     <loc>https://www.wisdom-dj.co.kr/insights/land-preparation/</loc>
   </url>
   <url>
     <loc>https://www.wisdom-dj.co.kr/insights/mfds-preparation/</loc>
   </url>
   <url>
+    <loc>https://www.wisdom-dj.co.kr/insights/procurement-preparation/</loc>
+  </url>
+  <url>
     <loc>https://www.wisdom-dj.co.kr/nationwide/</loc>
   </url>
   <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/administration/</loc>
+  </url>
+  <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/chemical/</loc>
+  </url>
+  <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/general/</loc>
+  </url>
+  <url>
     <loc>https://www.wisdom-dj.co.kr/specialties/</loc>
+  </url>
+  <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/land/</loc>
+  </url>
+  <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/mfds/</loc>
+  </url>
+  <url>
+    <loc>https://www.wisdom-dj.co.kr/specialties/procurement/</loc>
   </url>
   <url>
     <loc>https://www.wisdom-dj.co.kr/visit/</loc>
