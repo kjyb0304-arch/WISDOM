@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://wisdom-dj.co.kr/sitemap.xml
+Sitemap: https://www.wisdom-dj.co.kr/sitemap.xml
