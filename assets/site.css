@@ -1,3 +1,6 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap");
+
 :root{--bridge:url("image-01.jpg")}
 
 :root{--navy:#071c3c;--blue:#084baa;--blue-dark:#063e8c;--muted:#617186;--line:#dae3ee;--mist:#f4f7fb;--gold:#9b7434;--max:1240px}
@@ -166,5 +169,663 @@ body{
   .home-philosophy,
   .conversion-band{
     background:linear-gradient(150deg,#f6f9fd 0%,#eef4fb 100%);
+  }
+}
+
+
+/* =========================================================
+   v24 WISDOM PREMIUM BACKGROUND — VISIBLE REFINEMENT
+   Goal: still clean/white, but clearly more premium and dimensional.
+   ========================================================= */
+
+/* Global canvas: visible but restrained blue-silver atmosphere */
+.page{
+  position:relative;
+  background:
+    radial-gradient(circle at 8% 17%, rgba(89,145,214,.12), transparent 24%),
+    radial-gradient(circle at 92% 37%, rgba(59,108,171,.09), transparent 23%),
+    linear-gradient(180deg,#f7faff 0%,#ffffff 16%,#f4f8fd 48%,#ffffff 77%,#f5f9fe 100%);
+}
+
+/* HOME — service area gets a true full-width pale gradient instead of plain white */
+.page[data-route="/home"] > .wrap.section:not(.home-insights-section){
+  position:relative;
+  isolation:isolate;
+}
+.page[data-route="/home"] > .wrap.section:not(.home-insights-section)::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(circle at 11% 16%,rgba(112,166,232,.15),transparent 28%),
+    radial-gradient(circle at 87% 76%,rgba(70,125,194,.10),transparent 27%),
+    linear-gradient(135deg,#f8fbff 0%,#edf4fc 48%,#f8fbfe 100%);
+  border-top:1px solid rgba(215,227,241,.65);
+  border-bottom:1px solid rgba(215,227,241,.7);
+}
+
+/* HOME — insight area gets a second, slightly different premium band */
+.home-insights-section{
+  position:relative;
+  isolation:isolate;
+}
+.home-insights-section::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  top:0;
+  bottom:0;
+  left:50%;
+  width:100vw;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(circle at 82% 12%,rgba(111,161,222,.13),transparent 25%),
+    radial-gradient(circle at 18% 82%,rgba(108,148,202,.075),transparent 24%),
+    linear-gradient(118deg,#fafcff 0%,#eef4fb 50%,#f8fbff 100%);
+  border-top:1px solid rgba(220,230,242,.66);
+  border-bottom:1px solid rgba(220,230,242,.72);
+}
+
+/* Main hero: stronger light-to-photo transition */
+.home-hero{
+  background:
+    radial-gradient(circle at 18% 16%,rgba(115,174,238,.17),transparent 33%),
+    linear-gradient(128deg,#f7fbff 0%,#eaf3fd 55%,#f8fbff 100%);
+}
+.hero-wash{
+  background:
+    radial-gradient(circle at 24% 32%,rgba(255,255,255,.34),transparent 30%),
+    linear-gradient(90deg,#f4f9ff 0%,#edf5fd 43%,rgba(239,246,253,.97) 55%,rgba(234,244,253,.73) 67%,rgba(239,246,252,.10) 84%,transparent 94%);
+}
+
+/* Trust row: no longer stark white */
+.home-trust{
+  background:
+    linear-gradient(90deg,#fbfdff 0%,#f1f6fc 48%,#fbfdff 100%);
+}
+
+/* Philosophy band: visible premium blue-silver */
+.home-philosophy{
+  background:
+    radial-gradient(circle at 83% 14%,rgba(101,151,215,.16),transparent 30%),
+    radial-gradient(circle at 13% 82%,rgba(116,164,222,.09),transparent 27%),
+    linear-gradient(135deg,#f2f7fd 0%,#e7f0fa 51%,#f5f9fd 100%);
+}
+
+/* CTA band: slightly richer */
+.conversion-band{
+  background:
+    radial-gradient(circle at 14% 38%,rgba(91,151,223,.14),transparent 30%),
+    linear-gradient(105deg,#f5f9fe 0%,#e9f2fb 55%,#f7fbff 100%);
+}
+
+/* SUB-PAGE hero — clearly distinguishable from white body */
+.subhero{
+  background:
+    radial-gradient(circle at 12% 20%,rgba(101,163,235,.18),transparent 31%),
+    radial-gradient(circle at 86% 12%,rgba(66,119,183,.10),transparent 28%),
+    linear-gradient(120deg,#f5f9ff 0%,#e8f1fb 50%,#f7fbfe 100%);
+}
+.subhero.with-photo:after{
+  background:
+    linear-gradient(90deg,#f3f8fe 0%,#eef5fd 34%,rgba(238,245,252,.90) 52%,rgba(231,241,251,.49) 72%,rgba(233,242,250,.09) 95%),
+    var(--bridge);
+  background-size:cover,auto 150%;
+  background-repeat:no-repeat;
+  background-position:center,right center;
+  filter:saturate(.92) contrast(.98);
+}
+
+/* MENU DETAIL BODY — full width premium background + ghosted Daejeon image */
+.detail-layout{
+  position:relative;
+  isolation:isolate;
+}
+.detail-layout::before{
+  content:"";
+  position:absolute;
+  z-index:-2;
+  left:50%;
+  top:0;
+  bottom:-28px;
+  width:100vw;
+  transform:translateX(-50%);
+  background:
+    radial-gradient(circle at 9% 20%,rgba(111,168,231,.12),transparent 28%),
+    radial-gradient(circle at 90% 62%,rgba(74,126,190,.09),transparent 26%),
+    linear-gradient(135deg,#fbfdff 0%,#f1f6fc 50%,#f9fcff 100%);
+  border-bottom:1px solid rgba(216,228,242,.7);
+}
+.detail-layout::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  pointer-events:none;
+  width:min(760px,58vw);
+  height:430px;
+  right:-6vw;
+  top:18px;
+  background:
+    linear-gradient(90deg,rgba(249,252,255,1) 0%,rgba(249,252,255,.80) 24%,rgba(249,252,255,.18) 62%,rgba(249,252,255,0) 100%),
+    var(--bridge);
+  background-size:cover,cover;
+  background-position:center,right center;
+  background-repeat:no-repeat;
+  opacity:.12;
+  filter:blur(2.5px) saturate(.72);
+}
+
+/* General interior sections: white cards on soft background */
+.detail-body,
+.article-body{
+  position:relative;
+}
+.document-panel,
+.article-endnote,
+.article-aside,
+.support-card,
+.office-channel,
+.document-board,
+.contact-v2 form{
+  background:rgba(255,255,255,.94);
+  box-shadow:0 14px 34px rgba(18,52,91,.055);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+}
+
+/* Listing / insight pages should not read as pure white */
+.content-tools,
+.result-bar{
+  position:relative;
+}
+.insight-card,
+.service-card{
+  background:rgba(255,255,255,.96);
+  box-shadow:0 12px 30px rgba(20,55,96,.045);
+}
+
+/* Article hero stronger and editorial */
+.article-hero{
+  background:
+    radial-gradient(circle at 14% 26%,rgba(89,150,226,.16),transparent 30%),
+    radial-gradient(circle at 88% 7%,rgba(112,155,207,.10),transparent 26%),
+    linear-gradient(112deg,#f5f9ff 0%,#e9f2fb 52%,#f8fbfe 100%);
+}
+
+/* Office / contact / documents pages retain premium background even where content is sparse */
+.page[data-route="/visit"] .section,
+.page[data-route="/contact"] .section,
+.page[data-route="/documents"] .section,
+.page[data-route="/about"] .section,
+.page[data-route="/nationwide"] .section,
+.page[data-route="/guide"] .section,
+.page[data-route="/specialties"] .section,
+.page[data-route="/insights"] .section,
+.page[data-route="/cases"] .section{
+  background:transparent;
+}
+
+/* Slightly richer card borders to separate white cards from the gradient */
+.service-card,
+.insight-card,
+.support-card,
+.office-channel,
+.document-board,
+.contact-v2 form,
+.home-principles article{
+  border-color:#d3e0ef;
+}
+
+/* Mobile: effects remain visible, but the ghost image is heavily softened */
+@media(max-width:760px){
+  .page{
+    background:
+      linear-gradient(180deg,#f6faff 0%,#ffffff 18%,#f2f7fc 54%,#ffffff 80%,#f5f9fe 100%);
+  }
+  .page[data-route="/home"] > .wrap.section:not(.home-insights-section)::before,
+  .home-insights-section::before{
+    background:linear-gradient(145deg,#f6faff 0%,#eaf3fc 52%,#f8fbff 100%);
+  }
+  .home-hero{
+    background:linear-gradient(180deg,#f4f9ff 0%,#e8f2fc 58%,#f7faff 100%);
+  }
+  .hero-wash{
+    background:linear-gradient(180deg,#f5faff 0%,#eef6fd 50%,rgba(239,246,253,.95) 70%,rgba(240,247,253,.76) 100%);
+  }
+  .home-philosophy,
+  .conversion-band{
+    background:linear-gradient(150deg,#f1f7fd 0%,#e7f0fa 100%);
+  }
+  .subhero,
+  .article-hero{
+    background:linear-gradient(135deg,#f3f8fe 0%,#e7f1fb 58%,#f8fbfe 100%);
+  }
+  .detail-layout::before{
+    background:linear-gradient(150deg,#f9fcff 0%,#eef5fc 55%,#fbfdff 100%);
+  }
+  .detail-layout::after{
+    width:100vw;
+    height:330px;
+    right:-20vw;
+    top:40px;
+    opacity:.07;
+    filter:blur(5px) saturate(.6);
+  }
+}
+
+
+/* v25 — horizontal overflow fix
+   Preserve v24 visuals; prevent full-bleed pseudo elements from creating a page scrollbar. */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.page {
+  overflow-x: clip;
+}
+@supports not (overflow: clip) {
+  .page {
+    overflow-x: hidden;
+  }
+}
+
+/* =========================================================
+   v26 — WISDOM PREMIUM TYPOGRAPHY
+   Pretendard for UI/body + Noto Serif KR for philosophy.
+   ========================================================= */
+
+:root{
+  --font-sans:"Pretendard Variable","Pretendard",-apple-system,BlinkMacSystemFont,
+              "Segoe UI","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-serif:"Noto Serif KR","Noto Serif CJK KR","Batang","바탕",Georgia,serif;
+}
+
+html{
+  font-synthesis:none;
+}
+
+body{
+  font-family:var(--font-sans);
+  font-size:16px;
+  font-weight:400;
+  line-height:1.78;
+  letter-spacing:-.012em;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+button,input,select,textarea{
+  font-family:var(--font-sans);
+}
+
+h1,h2,h3{
+  font-family:var(--font-sans);
+  letter-spacing:-.038em;
+  text-wrap:balance;
+}
+
+h1{
+  font-weight:760;
+  line-height:1.34;
+}
+h2{
+  font-weight:720;
+  line-height:1.42;
+}
+h3{
+  font-weight:680;
+  line-height:1.48;
+}
+
+/* Header / navigation */
+.brand strong{
+  font-weight:720;
+  letter-spacing:-.03em;
+}
+.main-nav a{
+  font-weight:620;
+  letter-spacing:-.018em;
+}
+.header-cta .button,
+.button,
+.text-link,
+.card-link{
+  font-weight:650;
+}
+
+/* Hero */
+.hero-copy h1,
+.home-hero h1{
+  font-weight:780;
+  letter-spacing:-.047em;
+}
+.lead{
+  font-weight:410;
+  letter-spacing:-.018em;
+  line-height:1.82;
+}
+.home-hero .hero-meta,
+.home-hero .hero-support,
+.muted{
+  letter-spacing:-.012em;
+}
+
+/* Section labels */
+.eyebrow{
+  font-family:var(--font-sans);
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.section-head h2{
+  font-weight:740;
+  letter-spacing:-.04em;
+}
+.section-intro,
+.section-head p:not(.eyebrow){
+  line-height:1.75;
+}
+
+/* Cards */
+.service-card h3,
+.insight-card h3,
+.support-card h2,
+.home-principles h3{
+  font-weight:690;
+  letter-spacing:-.035em;
+}
+.service-card p,
+.insight-card p,
+.support-card p,
+.home-principles p{
+  font-weight:410;
+  line-height:1.78;
+}
+.category-pill{
+  font-weight:650;
+  letter-spacing:-.01em;
+}
+
+/* Detail pages / articles */
+.detail-intro h2,
+.detail-section h2,
+.document-panel h2,
+.work-steps>h2,
+.article-hero h1,
+.article-body h2{
+  font-weight:730;
+  letter-spacing:-.04em;
+}
+.article-body p,
+.detail-intro>p:last-child,
+.detail-section p{
+  font-weight:410;
+  line-height:1.88;
+}
+.article-body strong{
+  font-weight:700;
+}
+
+/* WISDOM philosophy: deliberately different, quieter serif voice */
+.home-philosophy h2,
+.philosophy-heading h2,
+.brand-quote h2,
+.wordmark{
+  font-family:var(--font-serif);
+  font-weight:600;
+  letter-spacing:-.028em;
+}
+.home-philosophy .hanja,
+.philosophy-heading .hanja,
+.brand-quote .hanja,
+.hanja{
+  font-family:var(--font-serif);
+  font-weight:600;
+  letter-spacing:-.015em;
+}
+.home-philosophy h2{
+  line-height:1.48;
+}
+.home-philosophy h2 .hanja{
+  color:var(--gold);
+}
+.philosophy-heading>p:last-child,
+.philosophy-close{
+  font-family:var(--font-sans);
+  font-weight:410;
+}
+
+/* Footer */
+.site-footer{
+  letter-spacing:-.012em;
+}
+.footer-inner strong{
+  font-weight:700;
+}
+.footer-links{
+  font-weight:520;
+}
+
+/* Small text: don't let premium styling make it too thin */
+.note,
+.footer-inner p,
+.service-card p,
+.insight-card p{
+  color:var(--muted);
+}
+
+/* Desktop readability tuning */
+@media(min-width:761px){
+  .hero-copy h1,
+  .home-hero h1{
+    line-height:1.31;
+  }
+  .service-card h3{
+    line-height:1.48;
+  }
+}
+
+/* Mobile — slightly tighter sizes, but stronger weights */
+@media(max-width:760px){
+  body{
+    font-size:15.5px;
+    line-height:1.72;
+  }
+  h1,h2,h3{
+    letter-spacing:-.035em;
+  }
+  .main-nav a,
+  .button,
+  .text-link,
+  .card-link{
+    font-weight:650;
+  }
+  .home-philosophy h2,
+  .philosophy-heading h2{
+    letter-spacing:-.022em;
+  }
+}
+
+
+/* =========================================================
+   v27 — WISDOM PREMIUM COLOR TYPOGRAPHY
+   Midnight Navy + Royal Cobalt + Champagne Gold
+   Gold is intentionally limited to small, symbolic accents.
+   ========================================================= */
+
+:root{
+  --wisdom-midnight:#0b2545;
+  --wisdom-deep-navy:#102f55;
+  --wisdom-royal:#0b5dbb;
+  --wisdom-cobalt:#175fb5;
+  --wisdom-champagne:#a98447;
+  --wisdom-antique-gold:#8f6a34;
+  --wisdom-soft-gold:#c7ad7a;
+  --wisdom-steel:#60758d;
+}
+
+/* Core headings: deeper navy gives a more premium print-like contrast. */
+.home-hero h1,
+.section-head h2,
+.detail-intro h2,
+.detail-section h2,
+.article-hero h1,
+.article-body h2,
+.conversion-band h2{
+  color:var(--wisdom-midnight);
+}
+
+/* Main brand word: blue + champagne gold only here. */
+.hero-wordmark{
+  color:var(--wisdom-royal);
+  font-weight:800;
+  letter-spacing:-.045em;
+}
+.hero-hanja{
+  color:var(--wisdom-champagne);
+  font-family:var(--font-serif);
+  font-weight:650;
+  letter-spacing:-.02em;
+}
+
+/* Main slogan gets an antique-gold note, but stays quiet. */
+.hero-slogan{
+  color:var(--wisdom-antique-gold);
+  font-weight:520;
+  letter-spacing:-.012em;
+}
+
+/* Section eyebrows: champagne-gold editorial accent. */
+.eyebrow{
+  color:var(--wisdom-antique-gold);
+}
+.home-insights-section .eyebrow,
+.conversion-band .eyebrow{
+  color:#8c6a37;
+}
+
+/* Service cards: titles remain navy; small numbers become gold. */
+.service-card h3,
+.insight-card h3,
+.support-card h2,
+.home-principles h3{
+  color:var(--wisdom-midnight);
+}
+.service-card .number,
+.insight-card .card-count,
+.home-principles article>span,
+.support-num{
+  color:var(--wisdom-champagne);
+  font-weight:700;
+}
+
+/* Icon treatment: sophisticated blue with warmer outline. */
+.iconbox{
+  color:var(--wisdom-royal);
+  background:
+    linear-gradient(145deg,rgba(239,246,255,.98),rgba(228,238,250,.92));
+  border:1px solid rgba(169,132,71,.16);
+}
+
+/* Links: richer cobalt; hover gets a restrained gold note. */
+.text-link,
+.card-link,
+.insight-card-footer strong,
+.hero-document-link{
+  color:var(--wisdom-royal);
+}
+.text-link:hover,
+.card-link:hover,
+.insight-card:hover .insight-card-footer strong,
+.hero-document-link:hover{
+  color:var(--wisdom-antique-gold);
+}
+
+/* Primary buttons: less generic blue, more midnight-cobalt. */
+.button.primary{
+  background:linear-gradient(135deg,#0b5dbb 0%,#0b3f80 100%);
+  border-color:#0b4f9f;
+  box-shadow:0 8px 20px rgba(11,70,137,.12);
+}
+.button.primary:hover{
+  background:linear-gradient(135deg,#0a559f 0%,#092f61 100%);
+}
+
+/* Outline buttons: navy text and subtle champagne edge on hover. */
+.button.outline{
+  color:var(--wisdom-deep-navy);
+  border-color:#7ea4d2;
+  background:rgba(255,255,255,.86);
+}
+.button.outline:hover{
+  color:var(--wisdom-antique-gold);
+  border-color:#b69865;
+  background:#fffdf9;
+}
+
+/* Philosophy: this is where gold earns its strongest role. */
+.home-philosophy h2,
+.philosophy-heading h2,
+.brand-quote h2{
+  color:var(--wisdom-midnight);
+}
+.home-philosophy .hanja,
+.philosophy-heading .hanja,
+.brand-quote .hanja,
+.hanja{
+  color:var(--wisdom-champagne);
+  text-shadow:0 1px 0 rgba(255,255,255,.7);
+}
+.home-principles article .eyebrow{
+  color:var(--wisdom-antique-gold);
+}
+.home-principles article>span{
+  font-family:var(--font-serif);
+  letter-spacing:.02em;
+}
+
+/* Category labels: quiet luxury instead of bright blue badges. */
+.category-pill{
+  color:#6f552d;
+  background:linear-gradient(180deg,#fbf7ef,#f5eddc);
+  border-color:#e5d5b7;
+}
+
+/* Article/detail micro accents */
+.article-meta,
+.breadcrumb,
+.muted,
+.section-intro{
+  color:#687c91;
+}
+.article-endnote strong{
+  color:var(--wisdom-deep-navy);
+}
+.article-endnote{
+  border-left:3px solid rgba(169,132,71,.72);
+}
+
+/* Footer brand and small highlights */
+.site-footer strong,
+.footer-inner strong{
+  color:var(--wisdom-midnight);
+}
+.site-footer a:hover{
+  color:var(--wisdom-antique-gold);
+}
+
+/* Mobile: keep gold legible, not pale. */
+@media(max-width:760px){
+  .hero-hanja,
+  .home-philosophy .hanja,
+  .service-card .number,
+  .insight-card .card-count,
+  .home-principles article>span{
+    color:#916b32;
   }
 }
