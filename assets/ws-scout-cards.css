@@ -1,0 +1,55 @@
+/* WISDOM SCOUT card sample v1 | intentionally scoped to .ws-auction */
+.ws-auction{--ws-navy:#081725;--ws-navy2:#123049;--ws-gold:#c5a675;--ws-text:#192d3e;--ws-muted:#617587;--ws-bg:#f5f7f9;--ws-line:#dce4e8;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;color:var(--ws-text);background:var(--ws-bg);margin:0;padding:76px 20px 82px;box-sizing:border-box;line-height:1.65;word-break:keep-all}
+.ws-auction *{box-sizing:border-box}
+.ws-auction .ws-wrap{max-width:1160px;margin:0 auto}
+.ws-auction .ws-kicker{display:flex;align-items:center;gap:10px;margin:0 0 12px;font-size:12px;font-weight:750;letter-spacing:.19em;text-transform:uppercase;color:#87704d}
+.ws-auction .ws-kicker:before{content:"";width:27px;height:2px;background:var(--ws-gold);display:inline-block}
+.ws-auction h2{font-size:clamp(26px,3.5vw,39px);line-height:1.3;font-weight:800;letter-spacing:-.045em;color:var(--ws-navy);margin:0}
+.ws-auction .ws-lead{font-size:15px;color:var(--ws-muted);max-width:740px;margin:16px 0 0;line-height:1.85}
+.ws-auction .ws-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:30px}
+.ws-auction .ws-archive{white-space:nowrap;background:#e7edf1;border:1px solid #dae3ea;border-radius:999px;padding:9px 14px;color:#41566a;font-weight:750;font-size:12px}
+.ws-auction .ws-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.ws-auction .ws-card{display:flex;flex-direction:column;min-width:0;background:#fff;border:1px solid #dce4e9;border-radius:18px;overflow:hidden;box-shadow:0 10px 32px rgba(12,32,48,.045);transition:transform .2s ease,box-shadow .2s ease}
+.ws-auction .ws-card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(12,32,48,.10)}
+.ws-auction .ws-card-top{display:flex;justify-content:space-between;align-items:center;min-height:68px;padding:15px 24px 15px;background:linear-gradient(115deg,var(--ws-navy),var(--ws-navy2));color:#fff}
+.ws-auction .ws-region{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700}
+.ws-auction .ws-region svg{width:19px;height:19px;stroke:var(--ws-gold);fill:none;stroke-width:1.6}
+.ws-auction .ws-tag{font-size:11px;font-weight:700;border:1px solid rgba(220,204,168,.38);background:rgba(255,255,255,.07);padding:5px 10px;border-radius:7px;color:#e4ceb0}
+.ws-auction .ws-card-main{padding:25px 25px 20px;display:flex;flex-direction:column;flex:1}
+.ws-auction .ws-index{font-size:11px;font-weight:750;color:#897653;letter-spacing:.16em;margin:0 0 8px}
+.ws-auction .ws-card h3{font-size:22px;letter-spacing:-.035em;line-height:1.38;color:var(--ws-navy);margin:0 0 13px;min-height:60px;font-weight:800}
+.ws-auction .ws-address{font-size:14px;color:#344a5e;font-weight:700;margin:0 0 6px}
+.ws-auction .ws-case{font-size:12px;color:#728294;margin:0 0 17px}
+.ws-auction .ws-prices{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:15px 0;margin:0 0 15px;border-top:1px solid #e5e9ed;border-bottom:1px solid #e5e9ed}
+.ws-auction .ws-price-label{font-size:11px;color:#728294;margin-bottom:4px}
+.ws-auction .ws-price{font-size:18px;letter-spacing:-.03em;color:#122f47;font-weight:800;line-height:1.3}
+.ws-auction .ws-price.min{color:#b27234}
+.ws-auction .ws-focus{font-size:13px;color:#405467;background:#f4f7f9;border-left:3px solid #bea270;padding:11px 12px;min-height:69px;margin:0 0 19px}
+.ws-auction .ws-focus strong{display:block;font-size:11px;color:#556c7e;margin-bottom:2px;letter-spacing:.02em}
+.ws-auction .ws-bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ws-auction .ws-date{font-size:11px;color:#647687;line-height:1.55}
+.ws-auction .ws-link{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-size:13px;font-weight:800;color:#123b5a;text-decoration:none;border-bottom:1px solid #a4b4be;padding-bottom:3px;transition:color .15s}
+.ws-auction .ws-link:hover,.ws-auction .ws-link:focus-visible{color:#ad7038;border-bottom-color:#ad7038}
+.ws-auction .ws-notice{margin:22px 0 0;background:#fff;border:1px solid #e1e5e8;border-radius:13px;padding:17px 20px;color:#607083;font-size:12px;line-height:1.85}
+.ws-auction .ws-notice strong{color:#344d64}
+.ws-auction .ws-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;margin:22px 0 0}
+.ws-auction .ws-footer p{font-size:12px;color:#667988;margin:0}
+.ws-auction .ws-footer a{background:#0e2b40;color:#fff;font-size:13px;font-weight:800;border-radius:9px;padding:11px 16px;text-decoration:none;white-space:nowrap}
+.ws-auction .ws-footer a:hover{background:#20445d}
+.ws-auction .ws-detail{max-width:1160px;margin:0 auto}
+.ws-auction .ws-back{color:#a58a5f;font-size:13px;text-decoration:none;font-weight:750}
+.ws-auction .ws-detailhead{background:linear-gradient(110deg,#0a1b2b,#193f57);color:white;padding:36px 36px 38px;border-radius:18px;margin-bottom:22px}
+.ws-auction .ws-detailhead h1{font-size:clamp(24px,4vw,36px);color:white;margin:8px 0 10px;line-height:1.35;letter-spacing:-.04em}
+.ws-auction .ws-detailhead p{color:#bdd0da;line-height:1.75;font-size:14px;margin:0}
+.ws-auction .ws-detailcard{border:1px solid #dce4e9;background:#fff;border-radius:16px;padding:28px;margin:20px 0;scroll-margin-top:20px}
+.ws-auction .ws-detailcard:target{outline:3px solid rgba(197,166,117,.48);outline-offset:2px}
+.ws-auction .ws-detailcard .ws-number{font-size:12px;color:#a48757;letter-spacing:.14em;font-weight:850}
+.ws-auction .ws-detailcard h2{font-size:25px;margin:9px 0}
+.ws-auction .ws-detailcard dl{display:grid;grid-template-columns:160px 1fr;gap:10px 15px;margin:21px 0}
+.ws-auction .ws-detailcard dt{color:#708191;font-size:13px}.ws-auction .ws-detailcard dd{margin:0;color:#213a50;font-size:14px;font-weight:700}
+.ws-auction .ws-source{margin-top:20px;padding:18px 20px;background:#f5f8fa;border-radius:10px;color:#40566b;font-size:14px}
+.ws-auction .ws-source strong{display:block;color:#233e52;margin-bottom:6px}
+.ws-auction a:focus-visible{outline:3px solid #c5a675;outline-offset:4px}
+@media(max-width:850px){.ws-auction .ws-head{align-items:flex-start;flex-direction:column}.ws-auction .ws-archive{white-space:normal}.ws-auction .ws-grid{gap:14px}}
+@media(max-width:690px){.ws-auction{padding:48px 16px 62px}.ws-auction .ws-grid{grid-template-columns:1fr}.ws-auction .ws-card-main{padding:21px}.ws-auction .ws-card h3{min-height:0}.ws-auction .ws-prices{gap:8px}.ws-auction .ws-price{font-size:16px}.ws-auction .ws-footer{align-items:flex-start;flex-direction:column}.ws-auction .ws-detailhead{padding:25px}.ws-auction .ws-detailcard{padding:22px}.ws-auction .ws-detailcard dl{grid-template-columns:1fr;gap:3px}.ws-auction .ws-detailcard dt:not(:first-child){margin-top:13px}}
+@media(prefers-reduced-motion:reduce){.ws-auction .ws-card{transition:none}.ws-auction .ws-card:hover{transform:none}}
