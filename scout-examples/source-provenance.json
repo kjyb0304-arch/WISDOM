@@ -1,0 +1,56 @@
+{
+  "schema": "WISDOM_SCOUT_ARCHIVED_CARD_PUBLICATION_V2",
+  "publicationDateKST": "2026-10-21",
+  "sourceFile": "nationwide-current.jsonl",
+  "sourceSha256": "66f55bcf4c700cc9abcae09399cba191159bcbf001b01348a163fc07d43403fb",
+  "sourceRowCount": 2382,
+  "sourceMode": "WORKFLOW_A_NOTICE_DETAIL_V1",
+  "verificationScope": "Stored notice detail fields only; NOT current court search",
+  "latestCourtResultsVerified": false,
+  "failedBidCountVerified": false,
+  "statusMeaningVerified": false,
+  "autoPublish": false,
+  "note": "The 2026-10-21 date refers only to manual replacement of four public educational examples. Source observations are from 2026-10-09 KST.",
+  "cases": [
+    {
+      "auctionLotKey": "B000280|2025타경502563|1",
+      "caseNumber": "2025타경502563",
+      "court": "대전지방법원",
+      "archiveObservedAtUTC": "2026-10-08T18:46:07.179Z",
+      "archivedSaleDate": "2026.10.22",
+      "archivedAppraisalPrice": 1691940000,
+      "archivedNoticeMinimum": 580335000,
+      "latestCourtStatusVerified": false
+    },
+    {
+      "auctionLotKey": "B000316|2025타경10213|1",
+      "caseNumber": "2025타경10213",
+      "court": "영덕지원",
+      "archiveObservedAtUTC": "2026-10-08T19:02:28.332Z",
+      "archivedSaleDate": "2026.10.23",
+      "archivedAppraisalPrice": 33044000,
+      "archivedNoticeMinimum": 7934000,
+      "latestCourtStatusVerified": false
+    },
+    {
+      "auctionLotKey": "B000431|2026타경20027|1",
+      "caseNumber": "2026타경20027",
+      "court": "마산지원",
+      "archiveObservedAtUTC": "2026-10-08T19:21:57.542Z",
+      "archivedSaleDate": "2026.10.22",
+      "archivedAppraisalPrice": 362312000,
+      "archivedNoticeMinimum": 177533000,
+      "latestCourtStatusVerified": false
+    },
+    {
+      "auctionLotKey": "B000411|2024타경2168|1",
+      "caseNumber": "2024타경2168",
+      "court": "울산지방법원",
+      "archiveObservedAtUTC": "2026-10-08T19:05:19.293Z",
+      "archivedSaleDate": "2026.10.22",
+      "archivedAppraisalPrice": 3320576000,
+      "archivedNoticeMinimum": 1627082000,
+      "latestCourtStatusVerified": false
+    }
+  ]
+}
